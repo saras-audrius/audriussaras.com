@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audrius Šaras · Data &amp; AI Engineer</title>
+<meta name="description" content="Audrius Šaras is a Data & AI Engineer at KPMG. End-to-end data and AI solutions, decision science, and on-device ML research. Creator of Hibiki LT-EN speech translation.">
+<meta property="og:title" content="Audrius Šaras · Data &amp; AI Engineer">
+<meta property="og:description" content="End-to-end data and AI solutions at KPMG. Better data, better decisions. The whole trajectory, rendered as a chart.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f7f3ea'/><path d='M15 80 L35 62 L55 48 L75 30 L88 16' stroke='%231f4ac2' stroke-width='8' fill='none' stroke-linecap='round'/><circle cx='88' cy='16' r='9' fill='%23d3401f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Azeret+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f3ea;
+  --paper-2: #efe9db;
+  --ink: #211e19;
+  --ink-soft: #5d574c;
+  --blue: #1f4ac2;
+  --red: #d3401f;
+  --grid: rgba(33, 30, 25, 0.07);
+  --serif: "Newsreader", Georgia, serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+::selection { background: var(--blue); color: var(--paper); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    var(--paper);
+  background-size: 48px 48px, 48px 48px, auto;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+.mono { font-family: var(--mono); }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 18px;
+  z-index: 200;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.skip:focus { left: 0; }
+
+/* ---------- masthead ---------- */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 20px 36px;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.masthead a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+.masthead a:hover { border-color: var(--red); color: var(--red); }
+.masthead .navlinks a { margin-left: 22px; }
+@media (max-width: 640px) {
+  .masthead { padding: 14px 16px; font-size: 11px; }
+  .masthead .navlinks a { margin-left: 12px; }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  padding: 80px 36px 84px;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero .portrait-wrap { margin: 0; }
+.hero .portrait {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--paper-2), 10px 10px 0 1px var(--ink);
+  margin-left: auto;
+}
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; }
+  .hero .portrait { max-width: 280px; margin: 0 auto; }
+}
+.hero .kicker {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-size: clamp(52px, 8.5vw, 110px);
+  font-weight: 360;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+}
+.hero h1 .ital { font-style: italic; font-weight: 320; color: var(--blue); }
+.hero .dek {
+  margin-top: 30px;
+  max-width: 620px;
+  font-size: 21px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  padding-bottom: 4px;
+}
+.hero .dek strong { color: var(--ink); font-weight: 500; font-style: normal; }
+.hero .cta-row {
+  margin-top: 34px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 var(--blue);
+}
+.btn:active { transform: translate(0, 0); box-shadow: none; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { box-shadow: 5px 5px 0 var(--red); }
+
+/* hand-drawn underline */
+.scribble { position: relative; white-space: nowrap; }
+.scribble svg {
+  position: absolute;
+  left: 0; bottom: -0.12em;
+  width: 100%; height: 0.28em;
+  overflow: visible;
+}
+.scribble path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 1.4s 0.9s ease forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+@media (max-width: 640px) {
+  .hero { padding: 52px 24px 56px; }
+}
+
+/* ---------- forks ---------- */
+.forks {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 10px 36px 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+@media (max-width: 760px) { .forks { grid-template-columns: 1fr; padding: 10px 24px 56px; } }
+.fork {
+  text-align: left;
+  font-family: var(--serif);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 28px 26px 22px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.fork:hover, .fork:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--paper-2), 6px 6px 0 1px var(--ink);
+}
+.fork .fork-kicker {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.fork h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 400; letter-spacing: -0.01em; }
+.fork h2 em { font-style: italic; color: var(--blue); }
+.fork p { color: var(--ink-soft); font-size: 16px; margin-top: 8px; }
+.fork .fork-cue {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--blue);
+  border-bottom: 1px solid rgba(31, 74, 194, 0.35);
+}
+.fork[aria-expanded="true"] { border-color: var(--red); }
+.fork[aria-expanded="true"] .fork-cue { color: var(--red); border-color: var(--red); }
+
+.branch[hidden] { display: none; }
+
+/* ---------- status stamps ---------- */
+.stamp {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1.5px solid var(--ink-soft);
+  color: var(--ink-soft);
+  transform: rotate(3deg);
+  background: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.stamp.now { border-color: var(--red); color: var(--red); }
+.stamp .pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.chart-foot {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-soft);
+  padding-top: 10px;
+}
+.corr .ps {
+  margin-top: 26px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ---------- section headings ---------- */
+.sect-head {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 90px 36px 10px;
+}
+.sect-head h2 {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 380;
+  letter-spacing: -0.015em;
+}
+.sect-head h2 em { font-style: italic; color: var(--blue); padding-bottom: 4px; }
+.sect-head .note { font-style: italic; color: var(--ink-soft); margin-top: 12px; max-width: 620px; }
+@media (max-width: 640px) { .sect-head { padding: 64px 24px 10px; } }
+
+/* ---------- scrolly ---------- */
+.scrolly {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  padding: 30px 36px 80px;
+}
+@media (max-width: 880px) {
+  .scrolly { grid-template-columns: 1fr; padding: 30px 24px 60px; }
+  .chart-wrap { position: sticky; top: 58px; z-index: 5; }
+}
+.chart-wrap {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--paper-2), 8px 8px 0 1px var(--ink);
+  padding: 26px 22px 14px;
+}
+.chart-wrap .chart-title {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.chart-wrap .chart-title .r2 { color: var(--ink-soft); }
+#careerChart { width: 100%; height: auto; display: block; }
+
+.axis-label-y { cursor: pointer; transition: fill 0.2s; }
+.axis-label-y:hover { fill: var(--red); }
+.pt-hit { cursor: pointer; }
+#eduClipRect, #workClipRect { transition: width 1s cubic-bezier(0.3, 0.7, 0.2, 1); }
+#nowGroup { transition: opacity 0.6s ease 0.4s; }
+#nowRing { animation: nowring 1.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes nowring { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3.2); opacity: 0; } }
+
+.steps { padding-top: 10px; }
+.step {
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 880px) { .step { min-height: 55vh; } }
+.step .card {
+  border-left: 3px solid var(--paper-2);
+  padding: 8px 0 8px 28px;
+  opacity: 0.25;
+  transform: translateX(10px);
+  transition: opacity 0.5s, transform 0.5s, border-color 0.5s;
+  cursor: pointer;
+}
+.step.active .card {
+  opacity: 1;
+  transform: none;
+  border-color: var(--red);
+}
+.step .when {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.step .when .kind { color: var(--ink-soft); }
+.step h3 {
+  font-size: 28px;
+  font-weight: 420;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.step h3 em { font-style: italic; color: var(--blue); font-weight: 350; }
+.step p { color: var(--ink-soft); font-size: 17px; max-width: 460px; }
+.step .more {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--blue);
+  border-bottom: 1px solid rgba(31, 74, 194, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+.step .card:hover .more { color: var(--red); border-color: var(--red); }
+
+/* ---------- detail dialog ---------- */
+dialog.detail {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  max-width: 640px;
+  width: calc(100vw - 48px);
+  padding: 0;
+  box-shadow: 10px 10px 0 var(--paper-2), 10px 10px 0 1px var(--ink);
+  margin: auto;
+}
+dialog.detail::backdrop {
+  background: rgba(33, 30, 25, 0.55);
+  backdrop-filter: blur(2px);
+}
+.detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.detail-head .period { color: var(--red); }
+.detail-head button {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.detail-head button:hover { color: var(--red); }
+.detail-body { padding: 24px 26px 26px; max-height: 70vh; overflow-y: auto; }
+.detail-body h3 { font-family: var(--serif); font-size: 30px; font-weight: 420; line-height: 1.15; margin-bottom: 6px; }
+.detail-body h3 em { font-style: italic; color: var(--blue); font-weight: 350; }
+.detail-body .role { font-style: italic; color: var(--ink-soft); margin-bottom: 18px; }
+.detail-body h4 {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 20px 0 8px;
+}
+.detail-body p { font-size: 16.5px; color: var(--ink); }
+.detail-body ul { list-style: none; }
+.detail-body ul li { padding-left: 20px; position: relative; font-size: 16.5px; margin-bottom: 6px; color: var(--ink); }
+.detail-body ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
+.detail-body .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.detail-body .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+}
+.detail-body .lesson {
+  margin-top: 20px;
+  border-left: 3px solid var(--red);
+  padding: 6px 0 6px 16px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ---------- projects ---------- */
+.proj-group {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 26px 36px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.proj-group::after { content: ""; flex: 1; height: 1px; background: var(--ink); opacity: 0.25; }
+@media (max-width: 760px) { .proj-group { padding: 26px 24px 10px; } }
+
+.figures {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 20px 36px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.figures.last { padding-bottom: 90px; }
+@media (max-width: 760px) { .figures { grid-template-columns: 1fr; padding: 20px 24px 30px; } .figures.last { padding-bottom: 70px; } }
+.figure {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 24px 24px 20px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.figure:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0 var(--paper-2), 6px 6px 0 1px var(--ink);
+}
+.figure.wide { grid-column: 1 / -1; }
+.figure h3 { font-size: 26px; font-weight: 420; margin-bottom: 8px; }
+.figure h3 em { font-style: italic; color: var(--blue); font-weight: 350; }
+.figure p { font-size: 16px; color: var(--ink-soft); }
+.figure .figviz { margin: 18px 0 8px; }
+.figure .caption {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--paper-2);
+  padding-top: 10px;
+  margin-top: 14px;
+}
+.figure .live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.figure .live .pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.figure .cardlink { position: absolute; inset: 0; z-index: 1; }
+.figure .readmore {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--blue);
+  border-bottom: 1px solid rgba(31, 74, 194, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+.figure:hover .readmore { color: var(--red); border-color: var(--red); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(211, 64, 31, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(211, 64, 31, 0); }
+}
+
+/* knee figure */
+.knee-svg .shin { transform-origin: 100px 80px; transition: transform 0.7s cubic-bezier(0.3, 1.4, 0.4, 1); }
+.figure:hover .knee-svg .shin { transform: rotate(38deg); }
+.knee-svg text { font-family: var(--mono); font-size: 9px; fill: var(--ink-soft); }
+
+/* waveform fig */
+.wavefig rect { animation: wf 1.4s ease-in-out infinite; transform-origin: center bottom; transform-box: fill-box; }
+@keyframes wf { 0%,100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+
+/* pipeline fig */
+.pipe-svg .flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -14; } }
+.pipe-svg text { font-family: var(--mono); font-size: 9.5px; fill: var(--ink-soft); }
+
+/* ---------- contact ---------- */
+.corr {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 30px 36px 110px;
+  text-align: center;
+}
+.corr .bigmail {
+  display: inline-block;
+  font-size: clamp(26px, 4.4vw, 46px);
+  font-style: italic;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 6px;
+  transition: color 0.25s, border-color 0.25s;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.corr .bigmail:hover { color: var(--red); border-color: var(--red); }
+.corr .links {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.corr .links a { color: var(--ink); text-decoration: none; margin: 0 16px; border-bottom: 1px solid var(--paper-2); }
+.corr .links a:hover { color: var(--red); border-color: var(--red); }
+
+/* ---------- colophon ---------- */
+.colophon {
+  border-top: 2px solid var(--ink);
+  padding: 24px 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  background: var(--paper);
+}
+.colophon .inf { cursor: pointer; }
+.colophon .inf:hover { color: var(--red); }
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 90px);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 13px 26px;
+  z-index: 999;
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1.15), opacity 0.4s;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 92vw;
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+@media (max-width: 640px) { .toast { white-space: normal; text-align: center; } }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- certifications ---------- */
+.certs { max-width: 1060px; margin: 0 auto; padding: 10px 36px 60px; }
+@media (max-width: 760px) { .certs { padding: 10px 24px 50px; } }
+.certs .sect-head { padding-top: 0; }
+.cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 30px; }
+@media (max-width: 880px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+.cert {
+  border: 2px solid var(--ink);
+  padding: 16px 16px 14px;
+  background: var(--paper);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cert:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--paper-2), 5px 5px 0 1px var(--ink); }
+.cert .code { font-family: var(--mono); font-size: 20px; color: var(--blue); letter-spacing: 0.04em; }
+.cert .cname { font-size: 14px; color: var(--ink-soft); margin-top: 4px; line-height: 1.4; }
+a.cert { display: block; text-decoration: none; color: inherit; }
+.certs-details summary {
+  list-style: none;
+  cursor: pointer;
+}
+.certs-details summary::-webkit-details-marker { display: none; }
+.certs-details summary h2 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 380;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-transform: none;
+  margin: 0;
+}
+.certs-details summary h2 em { font-style: italic; color: var(--blue); }
+.certs-details summary .note { font-style: italic; color: var(--ink-soft); margin-top: 12px; max-width: 620px; }
+.cert-cue {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--blue);
+  border-bottom: 1px solid rgba(31, 74, 194, 0.35);
+}
+.certs-details summary:hover .cert-cue { color: var(--red); border-color: var(--red); }
+.cert-cue::after { content: "unfold the list"; }
+.certs-details[open] .cert-cue::after { content: "fold the list away"; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#paths">Skip to content</a>
+
+<header class="masthead">
+  <div><a href="#top"><strong>A. ŠARAS</strong></a></div>
+  <nav class="navlinks" aria-label="Main">
+    <a href="#journey">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <div class="kicker">Data &times; AI Engineer &middot; KPMG</div>
+    <h1>
+      Audrius<br>
+      <span class="ital scribble">Šaras.
+        <svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 9 Q 40 2, 75 8 T 150 7 T 225 9 T 298 6"/>
+        </svg>
+      </span>
+    </h1>
+    <p class="dek">
+      From communication science to <strong>AI engineering</strong>. I build
+      end-to-end data and AI solutions at KPMG, helping clients make better
+      decisions on strong data foundations.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="mailto:sarasaudrius@gmail.com">Contact</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/sarasaudrius/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <figure class="portrait-wrap">
+    <img class="portrait" src="assets/portrait.png" alt="Portrait of Audrius Šaras" width="400" height="400">
+  </figure>
+</section>
+
+<!-- FORKS -->
+<section class="forks" id="paths" aria-label="Choose a path">
+  <button class="fork" id="forkJourney" aria-expanded="false" aria-controls="journey">
+    <div class="fork-kicker">path a &middot; the person</div>
+    <h2>The career, <em>plotted.</em></h2>
+    <p>Six points, two lines, and one pivot from business to technical.</p>
+    <span class="fork-cue">open this branch</span>
+  </button>
+  <button class="fork" id="forkProjects" aria-expanded="false" aria-controls="projects">
+    <div class="fork-kicker">path b &middot; the evidence</div>
+    <h2>The projects, <em>documented.</em></h2>
+    <p>Speech translation, surgery outcomes, supply chains. Each with its own page.</p>
+    <span class="fork-cue">open this branch</span>
+  </button>
+</section>
+
+<!-- JOURNEY BRANCH -->
+<div class="branch" id="journey" hidden>
+<div class="sect-head">
+  <p class="note">
+    Two lines, six points: education in dashed red, work in solid blue.
+    Click any point or chapter to open the case file.
+  </p>
+</div>
+
+<section class="scrolly">
+  <div class="chart-wrap">
+    <div class="chart-title mono">
+      <span>CAREER TRAJECTORY (OBSERVED)</span>
+      <span class="r2" id="r2label" title="this number is honest. unless you type a certain seven-letter word.">R&sup2; = 0.94</span>
+    </div>
+    <svg id="careerChart" viewBox="0 0 600 420" role="img" aria-label="Career chart with two series. Education in red: University of Amsterdam, Rotterdam School of Management, EAISI. Work in blue: Microsoft, Unilever, then KPMG continuing to now. Decision quality rising over time.">
+      <defs>
+        <clipPath id="eduClip"><rect id="eduClipRect" x="0" y="0" width="0" height="420"/></clipPath>
+        <clipPath id="workClip"><rect id="workClipRect" x="0" y="0" width="0" height="420"/></clipPath>
+      </defs>
+
+      <!-- axes -->
+      <line x1="50" y1="20" x2="50" y2="370" stroke="#211e19" stroke-width="2"/>
+      <line x1="50" y1="370" x2="580" y2="370" stroke="#211e19" stroke-width="2"/>
+      <text class="axis-label-y" id="yAxisLabel" x="-220" y="22" transform="rotate(-90)"
+        font-family="Azeret Mono" font-size="11" fill="#5d574c">decision quality<title>every good axis deserves a click</title></text>
+      <text class="axis-label-y" x="-345" y="22" transform="rotate(-90)" font-family="Azeret Mono"
+        font-size="9" fill="#d3401f" opacity="0.75" id="yAxisHint">(click me)</text>
+      <text x="548" y="394" font-family="Azeret Mono" font-size="11" fill="#5d574c">time</text>
+
+      <!-- x-axis year ticks -->
+      <g font-family="Azeret Mono" font-size="9.5" fill="#5d574c">
+        <text x="80"  y="384" text-anchor="middle">2020</text>
+        <text x="205" y="384" text-anchor="middle">2023</text>
+        <text x="330" y="384" text-anchor="middle">2024</text>
+        <text x="455" y="384" text-anchor="middle">2025</text>
+        <text x="565" y="384" text-anchor="middle">now</text>
+      </g>
+
+      <!-- gridlines -->
+      <g stroke="rgba(33,30,25,0.08)" stroke-width="1">
+        <line x1="50" y1="280" x2="580" y2="280"/>
+        <line x1="50" y1="190" x2="580" y2="190"/>
+        <line x1="50" y1="100" x2="580" y2="100"/>
+      </g>
+
+      <!-- legend -->
+      <g font-family="Azeret Mono" font-size="10">
+        <line x1="70" y1="34" x2="98" y2="34" stroke="#1f4ac2" stroke-width="3"/>
+        <text x="104" y="38" fill="#211e19">work</text>
+        <line x1="70" y1="52" x2="98" y2="52" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5"/>
+        <text x="104" y="56" fill="#211e19">education</text>
+      </g>
+
+      <!-- hidden outlier -->
+      <circle id="outlier" cx="318" cy="350" r="5" fill="rgba(211,64,31,0.3)" stroke="rgba(211,64,31,0.45)" style="cursor:help"/>
+
+      <!-- education series (dashed red) -->
+      <path id="eduPath" d="M 80 300 L 250 210 L 525 60"
+        fill="none" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" clip-path="url(#eduClip)"/>
+
+      <!-- work series (solid blue) -->
+      <path id="workPath" d="M 175 330 L 325 250 L 415 190"
+        fill="none" stroke="#1f4ac2" stroke-width="3.5" stroke-linecap="round" clip-path="url(#workClip)"/>
+
+      <!-- ongoing: KPMG extends to now -->
+      <g id="nowGroup" opacity="0">
+        <path id="extPath" d="M 415 190 L 572 140" fill="none" stroke="#1f4ac2" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round"/>
+        <circle id="nowCore" cx="572" cy="140" r="5" fill="#1f4ac2"/>
+        <circle id="nowRing" cx="572" cy="140" r="5" fill="none" stroke="#1f4ac2" stroke-width="1.5"/>
+        <text id="nowText" x="562" y="126" font-family="Azeret Mono" font-size="10" fill="#1f4ac2">now</text>
+      </g>
+
+      <!-- data points -->
+      <g id="pts">
+        <circle class="pt-hit" data-i="0" cx="80"  cy="300" r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
+        <circle class="pt-hit" data-i="1" cx="175" cy="330" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
+        <circle class="pt-hit" data-i="2" cx="250" cy="210" r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
+        <circle class="pt-hit" data-i="3" cx="325" cy="250" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
+        <circle class="pt-hit" data-i="4" cx="415" cy="190" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
+        <circle class="pt-hit" data-i="5" cx="525" cy="60"  r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
+      </g>
+
+      <!-- point labels: replaced by logos when assets/logos/*.png exist -->
+      <g font-family="Azeret Mono" font-size="10.5" fill="#211e19" id="ptLabels">
+        <text x="80"  y="282" text-anchor="middle">UVA</text>
+        <text x="175" y="356" text-anchor="middle">MSFT</text>
+        <text x="250" y="192" text-anchor="middle">RSM</text>
+        <text x="325" y="276" text-anchor="middle">UNILEVER</text>
+        <text x="415" y="216" text-anchor="middle">KPMG</text>
+        <text x="525" y="42"  text-anchor="middle">EAISI</text>
+      </g>
+      <g id="ptLogos"></g>
+    </svg>
+    <div class="chart-foot">* honest number. typing the word "overfit" on this page breaks it.</div>
+  </div>
+
+  <div class="steps" id="steps">
+    <div class="step" data-i="0">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">2020 to 2023 <span class="kind">&middot; education</span></div>
+        <h3>BSc Communication Science, minor in <em>Data Science &amp; AI.</em></h3>
+        <p>
+          Cum Laude at the University of Amsterdam. Studied how people communicate;
+          the minor taught me how data explains them. First models, first Python,
+          first proof that evidence beats intuition.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+
+    <div class="step" data-i="1">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">Feb to Aug 2023 <span class="kind">&middot; Microsoft</span></div>
+        <h3>Leading <em>Azure migrations</em> at big-tech scale.</h3>
+        <p>
+          Partner Development Manager for the SMC business, leading the Azure
+          Migration &amp; Modernization Programme. Where cloud strategy meets
+          the partner ecosystem.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+
+    <div class="step" data-i="2">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">Sep 2023 to Jul 2024 <span class="kind">&middot; education</span></div>
+        <h3>MSc Business Analytics &amp; Management at <em>RSM.</em></h3>
+        <p>
+          Cum Laude at Rotterdam School of Management. Analytics as a management
+          discipline: machine learning, optimisation, and the business judgment
+          to know which numbers matter.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+
+    <div class="step" data-i="3">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">Feb to Jul 2024 <span class="kind">&middot; Unilever</span></div>
+        <h3>Data analytics where <em>shelves</em> meet spreadsheets.</h3>
+        <p>
+          Customer Development Analytics team. Consumer goods runs on forecasts:
+          demand, retail performance, brands people hold in their hands. Models
+          with consequences you can find in a supermarket.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+
+    <div class="step" data-i="4">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">Jul 2024 to now <span class="kind">&middot; KPMG</span></div>
+        <h3>Data &amp; AI engineering, <em>in production.</em></h3>
+        <p>
+          Data &amp; AI Engineer in the Microsoft team. Building end-to-end data
+          and AI solutions and consulting clients on better decisions, built on
+          strong data foundations.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+
+    <div class="step" data-i="5">
+      <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
+        <div class="when">May 2025 to Apr 2026 <span class="kind">&middot; education</span></div>
+        <h3>Post-master in Data Science &amp; AI at <em>EAISI.</em></h3>
+        <p>
+          Professional doctorate-level programme at the Eindhoven AI Systems
+          Institute (TU/e), leading to the certified data scientist title.
+          Trading intuition for rigour, again.
+        </p>
+        <span class="more">open the case file</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- PROJECTS BRANCH -->
+<div class="branch" id="projects" hidden>
+<div class="sect-head">
+  <p class="note">Three kinds of evidence: what I build on my own time, what I build at work, and what I built during my degrees. Every card opens a full write-up.</p>
+</div>
+
+<div class="proj-group">Personal research</div>
+<section class="figures">
+  <article class="figure wide reveal">
+    <a class="cardlink" href="projects/hibiki.html" aria-label="Hibiki LT-EN, full write-up"></a>
+    <div class="stamp now"><span class="pulse"></span> now building</div>
+    <h3>Hibiki LT &harr; EN: <em>real-time speech translation.</em></h3>
+    <p>
+      Adapting Kyutai's Hibiki simultaneous translation model to an entirely new
+      language pair: Lithuanian and English. Full pipeline, built from scratch.
+      44,000 curated parallel pairs, synthetic bilingual stereo speech, a custom
+      fine-tuning fork, and on-device inference with MLX on Apple Silicon.
+      Speech in, translated speech out, no cloud.
+    </p>
+    <div class="figviz">
+      <svg class="wavefig" viewBox="0 0 600 60" width="100%" height="60" aria-hidden="true" id="wavefig"></svg>
+    </div>
+    <div class="caption">fig 1. live waveform, lithuanian phonemes pictured mid-flight. ~12.5 tok/s on an M4.</div>
+    <span class="readmore">read the full write-up</span>
+  </article>
+</section>
+
+<div class="proj-group">Work &middot; KPMG</div>
+<section class="figures">
+  <article class="figure wide reveal">
+    <a class="cardlink" href="projects/ai-solutions.html" aria-label="AI solutions at KPMG, full write-up"></a>
+    <div class="stamp now"><span class="pulse"></span> now building</div>
+    <h3>AI solutions on the <em>Microsoft stack.</em></h3>
+    <p>
+      The current chapter: demoing, researching and building AI solutions with
+      Microsoft AI Foundry, Copilot Studio and Agent 365, and consulting clients
+      on which of them actually fits their business problem. The hard part is
+      rarely the model. It is the match between tool and problem.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/fabric-platform.html" aria-label="Fabric data platform, full write-up"></a>
+    <div class="stamp">built &middot; 2025</div>
+    <h3>A data platform for <em>oil &amp; gas.</em></h3>
+    <p>
+      Co-built and managed a Microsoft Fabric data platform for a large oil &amp;
+      gas client: lakehouse, medallion architecture, metadata-driven pipelines,
+      change data capture. Personal contribution: re-architecting pipeline runs
+      from sequential to parallel, cutting processing time more than 5x.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/rtvrp.html" aria-label="Real-time VRP platform, full write-up"></a>
+    <div class="stamp">built &middot; 2026</div>
+    <h3>Real-time <em>route optimisation.</em></h3>
+    <p>
+      A real-time vehicle routing platform on Fabric Real-Time Intelligence,
+      built with colleagues: Eventhouse, Kafka, Azure Event Hubs, Eventstream,
+      KQL and live dashboards. The team was selected to present it at Microsoft
+      FabCon 2026 in Atlanta.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/hr-dashboards.html" aria-label="HR analytics dashboards, full write-up"></a>
+    <div class="stamp">built &middot; 2024</div>
+    <h3>HR analytics at <em>500+ users.</em></h3>
+    <p>
+      Built and managed Power BI dashboards for HR analytics, each serving more
+      than 500 users. Then made them survive without me: consulting and teaching
+      citizen developers to maintain them.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+</section>
+
+<div class="proj-group">Study</div>
+<section class="figures last">
+  <article class="figure wide reveal">
+    <a class="cardlink" href="projects/thesis.html" aria-label="Master thesis, full write-up"></a>
+    <div class="stamp">built &middot; 2024</div>
+    <h3>Forecasting SKU sales with <em>machine learning.</em></h3>
+    <p>
+      Master thesis at Unilever and RSM: enhancing category marketing planning by
+      forecasting SKU sales value share. Gradient Boosting and Random Forest
+      against Prophet over a 12-week horizon, SKU descriptions turned into text
+      embeddings, LASSO-targeted predictors, and SHAP values to open the black box.
+    </p>
+    <div class="figviz">
+      <svg class="pipe-svg" viewBox="0 0 600 70" width="100%" height="70" aria-hidden="true">
+        <rect x="10" y="18" width="110" height="34" fill="none" stroke="#1f4ac2" stroke-width="2"/>
+        <text x="26" y="39">sales data</text>
+        <line class="flow" x1="120" y1="35" x2="180" y2="35" stroke="#d3401f" stroke-width="2"/>
+        <rect x="180" y="18" width="120" height="34" fill="none" stroke="#1f4ac2" stroke-width="2"/>
+        <text x="196" y="39">embeddings</text>
+        <line class="flow" x1="300" y1="35" x2="360" y2="35" stroke="#d3401f" stroke-width="2"/>
+        <rect x="360" y="18" width="90" height="34" fill="none" stroke="#1f4ac2" stroke-width="2"/>
+        <text x="386" y="39">GBR</text>
+        <line class="flow" x1="450" y1="35" x2="500" y2="35" stroke="#d3401f" stroke-width="2"/>
+        <rect x="500" y="18" width="90" height="34" fill="#1f4ac2"/>
+        <text x="522" y="39" style="fill:#f7f3ea">SHAP</text>
+      </svg>
+    </div>
+    <div class="caption">fig 2. the pipeline in one line: from point-of-sale noise to explainable forecasts.</div>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/nhs-knees.html" aria-label="NHS knee outcomes project, full write-up"></a>
+    <div class="stamp">built &middot; 2025</div>
+    <h3>The NHS <em>knee models.</em></h3>
+    <p>
+      EAISI group project on NHS Digital PROMs data: predicting which knee
+      replacement patients will have poor outcomes, before surgery. Imbalanced
+      classes, precision-recall trade-offs, and decision thresholds a clinician
+      could actually use.
+    </p>
+    <div class="figviz">
+      <svg class="knee-svg" viewBox="0 0 220 150" width="100%" height="150" aria-hidden="true">
+        <line x1="30" y1="20" x2="100" y2="80" stroke="#1f4ac2" stroke-width="7" stroke-linecap="round"/>
+        <g class="shin">
+          <line x1="100" y1="80" x2="180" y2="115" stroke="#1f4ac2" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="180" cy="115" r="5" fill="#d3401f"/>
+        </g>
+        <circle cx="100" cy="80" r="9" fill="#f7f3ea" stroke="#d3401f" stroke-width="3.5"/>
+        <text x="96" y="60">joint of interest</text>
+        <path d="M 120 95 A 28 28 0 0 1 132 76" fill="none" stroke="#d3401f" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="138" y="100">&theta;</text>
+      </svg>
+    </div>
+    <div class="caption">fig 3. interactive. hover to flex. predicted range of motion: excellent.</div>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/econexus.html" aria-label="EcoNexus project, full write-up"></a>
+    <div class="stamp">built &middot; 2024</div>
+    <h3>EcoNexus: finance meets <em>ESG.</em></h3>
+    <p>
+      RSM FinTech project: a platform that balances financial and sustainability
+      goals in coffee supply chains using weighted goal programming. Python,
+      Flask and the Gurobi optimizer, with dynamic scenario analysis for
+      supplier selection.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+
+  <article class="figure reveal">
+    <a class="cardlink" href="projects/baw.html" aria-label="Hub and spoke optimisation project, full write-up"></a>
+    <div class="stamp">built &middot; 2024</div>
+    <h3>One more hub, <em>fewer kilometres.</em></h3>
+    <p>
+      Business Analytics Workshop at RSM: finding the optimal extra hub for a
+      logistics client's hub-and-spoke network. K-Means for candidate locations,
+      then TSP and VRP models in Gurobi and Google OR-Tools to minimise
+      kilometres driven.
+    </p>
+    <span class="readmore">read the full write-up</span>
+  </article>
+</section>
+</div>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" aria-label="Certifications">
+  <details class="certs-details">
+    <summary>
+      <h2>The credentials, <em>verified.</em></h2>
+      <p class="note">Seven Microsoft certifications across data, AI and the Power Platform. Each one links to its verified badge.</p>
+      <span class="cert-cue"></span>
+    </summary>
+    <div class="cert-grid">
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/fabric-data-engineer-associate?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">DP-700</div><div class="cname">Fabric Data Engineer Associate</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/fabric-analytics-engineer-associate?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">DP-600</div><div class="cname">Fabric Analytics Engineer Associate</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/data-analyst-associate?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">PL-300</div><div class="cname">Power BI Data Analyst Associate</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/azure-ai-apps-and-agents-developer-associate?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">AI-103</div><div class="cname">Azure AI Apps and Agents Developer Associate</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/azure-ai-fundamentals?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">AI-900</div><div class="cname">Azure AI Fundamentals</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/azure-data-fundamentals?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">DP-900</div><div class="cname">Azure Data Fundamentals</div></a>
+      <a class="cert" href="https://learn.microsoft.com/en-us/users/audriussaras-5138/credentials/certification/power-platform-fundamentals?tab=credentials-tab" target="_blank" rel="noopener"><div class="code">PL-900</div><div class="cname">Power Platform Fundamentals</div></a>
+    </div>
+  </details>
+</section>
+
+<!-- CONTACT -->
+<div class="sect-head" id="contact" style="text-align:center">
+  <h2>Get in <em>touch.</em></h2>
+</div>
+<section class="corr reveal">
+  <a class="bigmail" href="mailto:sarasaudrius@gmail.com">sarasaudrius@gmail.com</a>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/sarasaudrius/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/sarasaudrius" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <p class="ps">P.S. emails that open with "labas" get answered first.</p>
+</section>
+
+<footer class="colophon">
+  <div>&copy; <span id="yr"></span> Audrius Šaras &middot; typeset in Newsreader &amp; Azeret Mono &middot; no cookies, only priors</div>
+  <div class="inf" id="eggHint" title="a hint, if you want one">5 figures are hidden on this page</div>
+  <div class="inf" id="figInf" title="one more figure">fig. &infin;</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- CASE FILE DIALOG -->
+<dialog class="detail" id="detail">
+  <div class="detail-head">
+    <span class="period" id="dPeriod"></span>
+    <button id="dClose" aria-label="Close">[ close ]</button>
+  </div>
+  <div class="detail-body">
+    <h3 id="dTitle"></h3>
+    <p class="role" id="dRole"></p>
+    <h4>The work</h4>
+    <ul id="dWork"></ul>
+    <h4>Concepts</h4>
+    <div class="tags" id="dTags"></div>
+    <h4>What it taught me</h4>
+    <p class="lesson" id="dLesson"></p>
+  </div>
+</dialog>
+
+<script>
+/* ---------- toast ---------- */
+const toast = document.getElementById("toast");
+let toastTimer;
+function showToast(msg, ms = 3000) {
+  toast.textContent = msg;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), ms);
+}
+
+/* ---------- fork branches ---------- */
+const forks = { journey: document.getElementById("forkJourney"), projects: document.getElementById("forkProjects") };
+function openBranch(name, scroll = true) {
+  const branch = document.getElementById(name);
+  const btn = forks[name];
+  const open = branch.hidden;
+  branch.hidden = !open;
+  btn.setAttribute("aria-expanded", String(open));
+  btn.querySelector(".fork-cue").textContent = open ? "close this branch" : "open this branch";
+  if (open && scroll) branch.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function ensureBranch(name) {
+  const branch = document.getElementById(name);
+  if (branch.hidden) openBranch(name, false);
+  branch.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+forks.journey.addEventListener("click", () => openBranch("journey"));
+forks.projects.addEventListener("click", () => openBranch("projects"));
+document.querySelectorAll('.navlinks a[href="#journey"], .navlinks a[href="#projects"]').forEach(a => {
+  a.addEventListener("click", e => {
+    e.preventDefault();
+    ensureBranch(a.getAttribute("href").slice(1));
+  });
+});
+
+/* ---------- case files (edit freely) ---------- */
+const caseFiles = [
+  {
+    period: "2020 to 2023 · University of Amsterdam",
+    title: "BSc Communication Science, minor Data Science & AI",
+    role: "Cum Laude at the University of Amsterdam. Where communication met computation.",
+    work: [
+      "Full bachelor's in Communication Science, graduated Cum Laude",
+      "Minor in Data Science & AI: first ML models, statistics and Python",
+      "Learned to design research: hypotheses, methods, evidence"
+    ],
+    tags: ["Statistics", "Research methods", "Python", "First ML"],
+    lesson: "Communicating an insight is half the job. The other half is having one worth communicating."
+  },
+  {
+    period: "Feb to Aug 2023 · Microsoft",
+    title: "Partner Development Manager, SMC",
+    role: "Leading the Azure Migration & Modernization Programme.",
+    work: [
+      "Led AMMP for the Small, Medium & Corporate partner business",
+      "Guided partners through moving client estates to Azure",
+      "Built migration business cases where technology met commercial reality"
+    ],
+    tags: ["Azure", "Cloud migration", "Partner ecosystem", "Business cases"],
+    lesson: "Technology lands only when the business case does. Scale is a feature and a constraint."
+  },
+  {
+    period: "Sep 2023 to Jul 2024 · RSM",
+    title: "MSc Business Analytics & Management",
+    role: "Cum Laude at Rotterdam School of Management.",
+    work: [
+      "Machine learning, optimisation and econometrics with a management lens",
+      "Learned to translate between the model and the boardroom",
+      "Graduated Cum Laude while working in analytics on the side"
+    ],
+    tags: ["Machine learning", "Optimisation", "Econometrics", "Strategy"],
+    lesson: "Analytics is a management discipline. The hard part is deciding which numbers deserve attention."
+  },
+  {
+    period: "Feb to Jul 2024 · Unilever",
+    title: "Data Analytics, Customer Development",
+    role: "Customer Development Analytics team.",
+    work: [
+      "Analytics for retail and customer development across major brands",
+      "Turned sales and customer data into decisions account teams could act on",
+      "Worked where forecasts meet physical shelves"
+    ],
+    tags: ["Retail analytics", "Forecasting", "Dashboards", "Stakeholders"],
+    lesson: "A model nobody acts on is a hobby. Adoption is a design requirement, not an afterthought."
+  },
+  {
+    period: "Jul 2024 to now · KPMG",
+    title: "Data & AI Engineer, Microsoft team",
+    role: "End-to-end data and AI solutions for clients.",
+    work: [
+      "Built and managed Power BI dashboards for HR analytics, each serving 500+ users, and taught citizen developers to maintain them",
+      "Co-built a Microsoft Fabric data platform for a large oil & gas client: lakehouse, medallion architecture, metadata-driven pipelines, change data capture",
+      "Re-architected pipeline orchestration from sequential to parallel, cutting processing time more than 5x",
+      "Co-built a real-time VRP optimisation platform on Fabric Real-Time Intelligence, presented by the team at Microsoft FabCon 2026",
+      "Now demoing, researching and building AI solutions with Microsoft AI Foundry, Copilot Studio and Agent 365",
+      "Absorbed the good practices along the way: git discipline, CI/CD, Agile delivery"
+    ],
+    tags: ["Microsoft Fabric", "PySpark", "Power BI", "GenAI agents", "CI/CD", "Agile"],
+    lesson: "Strong decisions need strong foundations. Most AI problems are data problems wearing a costume."
+  },
+  {
+    period: "May 2025 to Apr 2026 · EAISI",
+    title: "Post-master Data Science & AI, TU/e",
+    role: "Professional degree at the Eindhoven AI Systems Institute. Certified data scientist title.",
+    work: [
+      "Deepening ML engineering, MLOps and AI systems thinking",
+      "Applying rigour to real industry cases alongside the day job",
+      "Building AI that survives contact with the real world"
+    ],
+    tags: ["ML engineering", "MLOps", "AI systems", "Responsible AI"],
+    lesson: "Rigour compounds. Every shortcut you skip early is interest you collect later."
+  }
+];
+
+/* ---------- dialog ---------- */
+const dlg = document.getElementById("detail");
+function openCase(i) {
+  const c = caseFiles[i];
+  document.getElementById("dPeriod").textContent = c.period;
+  document.getElementById("dTitle").textContent = c.title;
+  document.getElementById("dRole").textContent = c.role;
+  document.getElementById("dWork").innerHTML = c.work.map(w => `<li>${w}</li>`).join("");
+  document.getElementById("dTags").innerHTML = c.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  document.getElementById("dLesson").textContent = c.lesson;
+  dlg.showModal();
+}
+document.getElementById("dClose").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+document.querySelectorAll(".step .card").forEach((card, idx) => {
+  const i = +card.closest(".step").dataset.i;
+  card.addEventListener("click", () => openCase(i));
+  card.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCase(i); }
+  });
+});
+document.querySelectorAll(".pt-hit").forEach(c => {
+  c.addEventListener("click", () => openCase(+c.dataset.i));
+});
+
+/* ---------- chart: two series (work solid blue, education dashed red) ---------- */
+const basePts = [[80,300],[175,330],[250,210],[325,250],[415,190],[525,60]];
+const eduIdx = [0, 2, 5], workIdx = [1, 3, 4];
+const isEdu = i => eduIdx.includes(i);
+const seriesColor = i => isEdu(i) ? "#d3401f" : "#1f4ac2";
+
+const eduPath = document.getElementById("eduPath");
+const workPath = document.getElementById("workPath");
+const extPath = document.getElementById("extPath");
+const nowGroup = document.getElementById("nowGroup");
+const nowCore = document.getElementById("nowCore");
+const nowRing = document.getElementById("nowRing");
+const nowText = document.getElementById("nowText");
+const eduClipRect = document.getElementById("eduClipRect");
+const workClipRect = document.getElementById("workClipRect");
+const ptCircles = [...document.querySelectorAll("#pts circle")];
+const ptLabels = [...document.querySelectorAll("#ptLabels text")];
+const logoLayer = document.getElementById("ptLogos");
+const LOGO_W = 52, LOGO_H = 24;
+
+const labelY = (pt, i) => isEdu(i) ? pt[1] - 18 : pt[1] + 26;
+const logoY  = (pt, i) => isEdu(i) ? pt[1] - LOGO_H - 14 : pt[1] + 14;
+const pathD = (idxs, pts) => "M " + idxs.map(i => pts[i].join(" ")).join(" L ");
+
+function layout(pts) {
+  eduPath.setAttribute("d", pathD(eduIdx, pts));
+  workPath.setAttribute("d", pathD(workIdx, pts));
+  const [kx, ky] = pts[4];
+  const ex = 572, ey = Math.max(30, ky - 50);
+  extPath.setAttribute("d", `M ${kx} ${ky} L ${ex} ${ey}`);
+  nowCore.setAttribute("cx", ex); nowCore.setAttribute("cy", ey);
+  nowRing.setAttribute("cx", ex); nowRing.setAttribute("cy", ey);
+  nowText.setAttribute("x", ex - 10); nowText.setAttribute("y", ey - 14);
+  pts.forEach((p, i) => {
+    ptCircles[i].setAttribute("cx", p[0]); ptCircles[i].setAttribute("cy", p[1]);
+    ptLabels[i].setAttribute("x", p[0]);   ptLabels[i].setAttribute("y", labelY(p, i));
+    const img = logoLayer.querySelector(`[data-i="${i}"]`);
+    if (img) { img.setAttribute("x", p[0] - LOGO_W / 2); img.setAttribute("y", logoY(p, i)); }
+  });
+}
+
+let activeIdx = -1;
+function setActive(i) {
+  if (i === activeIdx) return;
+  activeIdx = i;
+  applyReveal();
+}
+function applyReveal() {
+  const i = activeIdx;
+  const reach = idxs => {
+    const seen = idxs.filter(j => j <= i);
+    return seen.length ? basePts[seen[seen.length - 1]][0] + 14 : 0;
+  };
+  eduClipRect.style.width = reach(eduIdx) + "px";
+  workClipRect.style.width = reach(workIdx) + "px";
+  nowGroup.style.opacity = i >= 4 ? "1" : "0";
+  ptCircles.forEach((c, j) => {
+    c.setAttribute("fill", j <= i ? seriesColor(j) : "#f7f3ea");
+    c.setAttribute("stroke", seriesColor(j));
+    c.setAttribute("r", j === i ? 10 : 7);
+  });
+  ptLabels.forEach((t, j) => {
+    t.setAttribute("font-weight", j === i ? "600" : "400");
+    t.setAttribute("fill", j === i ? seriesColor(j) : "#211e19");
+  });
+  document.querySelectorAll(".step").forEach(s =>
+    s.classList.toggle("active", +s.dataset.i === i));
+}
+
+const stepIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) setActive(+e.target.dataset.i); });
+}, { rootMargin: "-40% 0px -40% 0px" });
+document.querySelectorAll(".step").forEach(s => stepIO.observe(s));
+
+/* ---------- logos: drop PNG/SVG files into assets/logos/ and they replace the text labels ----------
+   expected files: bsc.png, microsoft.png, rsm.png, unilever.png, kpmg.png, eaisi.png (svg also works) */
+const logoFiles = ["bsc", "microsoft", "rsm", "unilever", "kpmg", "eaisi"];
+logoFiles.forEach((name, i) => {
+  const tryExt = exts => {
+    if (!exts.length) return;
+    const src = `assets/logos/${name}.${exts[0]}`;
+    const probe = new Image();
+    probe.onload = () => {
+      const p = basePts[i];
+      const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
+      img.setAttribute("href", src);
+      img.setAttribute("data-i", i);
+      img.setAttribute("x", p[0] - LOGO_W / 2);
+      img.setAttribute("y", logoY(p, i));
+      img.setAttribute("width", LOGO_W);
+      img.setAttribute("height", LOGO_H);
+      img.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      logoLayer.appendChild(img);
+      ptLabels[i].style.display = "none";
+    };
+    probe.onerror = () => tryExt(exts.slice(1));
+    probe.src = src;
+  };
+  tryExt(["svg", "png"]);
+});
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold: 0.15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ---------- waveform fig ---------- */
+const wf = document.getElementById("wavefig");
+for (let i = 0; i < 80; i++) {
+  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  const h = 8 + Math.random() * 44;
+  r.setAttribute("x", i * 7.5);
+  r.setAttribute("y", 60 - h);
+  r.setAttribute("width", 4);
+  r.setAttribute("height", h);
+  r.setAttribute("fill", i % 9 === 0 ? "#d3401f" : "#1f4ac2");
+  r.style.animationDelay = (i * 0.045) + "s";
+  r.style.animationDuration = (1 + Math.random()) + "s";
+  wf.appendChild(r);
+}
+
+/* ============ EASTER EGG 1: y-axis click, log scale ============ */
+let logScale = false;
+function setLogScale(on) {
+  logScale = on;
+  const newPts = basePts.map(([x, y]) => {
+    if (!logScale) return [x, y];
+    const q = 370 - y;
+    const lq = Math.log(q + 1) / Math.log(351) * 340;
+    return [x, 370 - lq];
+  });
+  layout(newPts);
+  document.getElementById("yAxisLabel").firstChild.textContent = logScale ? "log(decision quality)" : "decision quality";
+}
+document.getElementById("yAxisLabel").addEventListener("click", () => {
+  setLogScale(!logScale);
+  showToast(logScale
+    ? "log scale enabled. still up and to the right, that's the point."
+    : "linear scale restored. honesty resumed.");
+});
+
+/* ============ EASTER EGG 2: type "overfit" ============ */
+let typed = "";
+window.addEventListener("keydown", e => {
+  if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+  if (e.key.length === 1) typed = (typed + e.key.toLowerCase()).slice(-12);
+  if (typed.endsWith("overfit")) {
+    typed = "";
+    const noise = start => {
+      let d = `M ${start} ${80 + Math.random() * 260}`;
+      for (let x = start + 10; x <= 560; x += 12) d += ` L ${x} ${80 + Math.random() * 260}`;
+      return d;
+    };
+    eduPath.setAttribute("d", noise(80));
+    workPath.setAttribute("d", noise(175));
+    eduClipRect.style.width = "600px";
+    workClipRect.style.width = "600px";
+    document.getElementById("r2label").textContent = "R² = 1.00 ⚠";
+    showToast("OVERFIT: perfect fit on training data, zero generalization. type 'dropout' to regularize.");
+  }
+  if (typed.endsWith("dropout")) {
+    typed = "";
+    setLogScale(false);
+    applyReveal();
+    document.getElementById("r2label").textContent = "R² = 0.94";
+    showToast("dropout applied. model regularized. carry on.");
+  }
+  if (typed.endsWith("labas")) {
+    typed = "";
+    showToast("Labas! 🇱🇹 the lithuanian handshake survives every redesign.");
+  }
+});
+
+/* ============ EASTER EGG 3: the outlier ============ */
+document.getElementById("outlier").addEventListener("click", () => {
+  showToast("outlier detected: 2020. excluded from analysis. we don't talk about 2020.");
+});
+document.getElementById("outlier").addEventListener("mouseenter", () => {
+  showToast("...what's this faint data point? click it.", 1800);
+});
+
+/* ============ EASTER EGG 4: fig. infinity ============ */
+let infClicks = 0;
+document.getElementById("figInf").addEventListener("click", () => {
+  infClicks++;
+  const msgs = [
+    "fig. ∞: the figure that proves every chart hides another chart.",
+    "fig. ∞ + 1: careful, this axis is unbounded.",
+    "fig. ∞ + 2: okay, you win. email me and I'll show you the real backlog."
+  ];
+  showToast(msgs[Math.min(infClicks - 1, msgs.length - 1)], 3400);
+});
+
+/* ============ hint trail ============ */
+document.getElementById("eggHint").addEventListener("click", () => {
+  showToast("look for red ink: the chart's y-axis, the small print under it, and the P.S. by the email.", 4600);
+});
+
+/* ============ EASTER EGG 5: console ============ */
+console.log(`%c
+  FIG. 0: THE READER WHO READS SOURCE
+  -----------------------------------
+  hypothesis: you are curious.
+  evidence:   you opened the console.
+  p < 0.001.  hypothesis confirmed.
+
+  five hidden figures on this page:
+   1. the y-axis label of the career chart takes clicks personally
+   2. type 'overfit' anywhere on the page. regret it. type 'dropout'
+   3. one faint data point in the chart does not belong. click it
+   4. the infinity figure in the footer rewards persistence
+   5. greet me in my mother tongue (5 letters, starts with L)
+
+  contact: sarasaudrius@gmail.com
+`, "color:#1f4ac2; font-family:monospace; font-size:12px;");
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

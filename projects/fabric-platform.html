@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Fabric data platform for oil and gas · Audrius Šaras</title>
+<meta name="description" content="Co-built a Microsoft Fabric data platform for a large oil and gas client: lakehouse, medallion architecture, metadata-driven pipelines, CDC, PySpark.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f7f3ea'/><path d='M15 80 L35 62 L55 48 L75 30 L88 16' stroke='%231f4ac2' stroke-width='8' fill='none' stroke-linecap='round'/><circle cx='88' cy='16' r='9' fill='%23d3401f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Azeret+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f3ea; --paper-2: #efe9db; --ink: #211e19; --ink-soft: #5d574c;
+  --blue: #1f4ac2; --red: #d3401f; --grid: rgba(33, 30, 25, 0.07);
+  --serif: "Newsreader", Georgia, serif; --mono: "Azeret Mono", ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+::selection { background: var(--blue); color: var(--paper); }
+body {
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    var(--paper);
+  background-size: 48px 48px, 48px 48px, auto;
+  color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.65;
+}
+.masthead {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 20px 36px; border-bottom: 2px solid var(--ink);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--paper); position: sticky; top: 0; z-index: 50;
+}
+.masthead a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+.masthead a:hover { border-color: var(--red); color: var(--red); }
+main { max-width: 820px; margin: 0 auto; padding: 70px 36px 100px; }
+.meta {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 20px;
+}
+.stamp {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 10px; border: 1.5px solid var(--ink-soft); color: var(--ink-soft);
+  transform: rotate(2deg); display: inline-flex; align-items: center; gap: 7px; background: var(--paper);
+}
+.stamp.now { border-color: var(--red); color: var(--red); }
+.stamp .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(211,64,31,0.45); } 50% { box-shadow: 0 0 0 7px rgba(211,64,31,0); } }
+h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 380; line-height: 1.05; letter-spacing: -0.015em; }
+h1 em { font-style: italic; color: var(--blue); }
+.dek { margin-top: 18px; font-size: 20px; font-style: italic; color: var(--ink-soft); max-width: 640px; }
+h2 {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--red); margin: 44px 0 14px;
+}
+p { margin-bottom: 16px; }
+ul { list-style: none; }
+ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
+ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.btn {
+  display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none; padding: 13px 26px;
+  background: var(--ink); color: var(--paper); border: 2px solid var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; margin-right: 16px; margin-bottom: 10px;
+}
+.btn:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--blue); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { box-shadow: 5px 5px 0 var(--red); }
+.colophon {
+  border-top: 2px solid var(--ink); padding: 24px 36px; display: flex; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); background: var(--paper);
+}
+.colophon a { color: inherit; }
+@media (max-width: 640px) { main { padding: 50px 24px 80px; } }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div><a href="../index.html"><strong>A. ŠARAS</strong></a></div>
+  <nav><a href="../index.html#projects">back to projects</a></nav>
+</header>
+<main>
+  <div class="meta"><span>2024 to 2025 · KPMG client work</span> <span class="stamp">built · 2025</span></div>
+  <h1>A data platform for <em>oil &amp; gas.</em></h1>
+  <p class="dek">A large oil &amp; gas client, a team of developers, and one lakehouse to bring the data together.</p>
+  <h2>What it is</h2>
+  <p>Together with a team of developers, I built and managed a data platform for a large oil &amp; gas client on Microsoft Fabric. The architecture followed the medallion pattern (bronze, silver, gold) on a lakehouse foundation, fed by metadata-driven data pipelines with change data capture and Dataflow Gen2, and transformed with PySpark and Spark SQL.</p>
+  <p>My personal contribution: re-architecting how the pipelines run. The platform originally processed sequentially; I introduced a parallel execution pattern that cut processing time by more than 5x. I also slimmed down overbloated tables, reducing row counts for faster, cheaper ingestion.</p>
+  <h2>The work</h2>
+  <ul>
+    <li>Co-built and managed the client's Fabric data platform end to end with a team of developers</li>
+    <li>Implemented medallion architecture on a lakehouse with metadata-driven pipelines</li>
+    <li>Change data capture and Dataflow Gen2 for ingestion; PySpark and Spark SQL for transformation</li>
+    <li>Re-architected pipeline orchestration from sequential to parallel: more than 5x faster processing</li>
+    <li>Reduced overbloated tables and row counts for better ingestion performance</li>
+    <li>Worked in an Agile team with git-based workflows and CI/CD</li>
+  </ul>
+  <h2>Concepts</h2>
+  <div class="tags">
+    <span class="tag">Microsoft Fabric</span>
+    <span class="tag">Lakehouse</span>
+    <span class="tag">Medallion architecture</span>
+    <span class="tag">Metadata-driven</span>
+    <span class="tag">CDC</span>
+    <span class="tag">Dataflow Gen2</span>
+    <span class="tag">PySpark</span>
+    <span class="tag">Spark SQL</span>
+  </div>
+  <h2>What it taught me</h2>
+  <p class="lesson">Sequential pipelines are a default, not a law. The biggest performance wins came from questioning how the work was scheduled, not how it was written.</p>
+</main>
+<footer class="colophon">
+  <div>© <span id="yr"></span> Audrius Šaras · no cookies, only priors</div>
+  <div><a href="../index.html">back to the chart</a></div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
