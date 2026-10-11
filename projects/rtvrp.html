@@ -60,7 +60,7 @@ ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
 ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
-.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: normal; color: var(--ink-soft); }
 .btn {
   display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
   text-transform: uppercase; text-decoration: none; padding: 13px 26px;
@@ -101,10 +101,10 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 <main>
   <div class="meta"><span>2025 to 2026 · KPMG, with colleagues</span> <span class="stamp">built · 2026</span></div>
   <h1>Real-time <em>route optimisation.</em></h1>
-  <p class="dek">Vehicle routing is an old optimisation problem. Solving it continuously, on live event streams, is a much newer one.</p>
+  <p class="dek">A vehicle routing platform that re-optimises routes continuously on live event streams, built on Fabric Real-Time Intelligence.</p>
   <h2>What it is</h2>
   <p>With a couple of colleagues I built a real-time vehicle routing (VRP) optimisation platform on Microsoft Fabric's Real-Time Intelligence hub. Events flow in through Kafka and Azure Event Hubs, land in an Eventstream, get stored and queried in an Eventhouse with KQL, and surface on real-time dashboards with activators triggering downstream actions.</p>
-  <p>The project was a tour of essentially the entire Fabric Real-Time Intelligence stack. Two colleagues presented the solution at Microsoft FabCon 2026 in Atlanta. I co-built the platform and mentored them, helping heavily with the development of the solution.</p>
+  <p>The project used most of the Fabric Real-Time Intelligence stack. Two colleagues presented the solution at Microsoft FabCon 2026 in Atlanta. I co-built the platform and mentored them, helping heavily with the development of the solution.</p>
   <figure class="media"><svg viewBox="0 0 600 300" aria-hidden="true"><g stroke="#efe9db" stroke-width="10" stroke-linecap="round"><line x1="20" y1="60" x2="580" y2="60"/><line x1="20" y1="150" x2="580" y2="150"/><line x1="20" y1="240" x2="580" y2="240"/><line x1="90" y1="20" x2="90" y2="280"/><line x1="230" y1="20" x2="230" y2="280"/><line x1="370" y1="20" x2="370" y2="280"/><line x1="510" y1="20" x2="510" y2="280"/></g><path d="M 90 150 L 230 150 L 230 60 L 510 60 L 510 150" fill="none" stroke="#1f4ac2" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#1f4ac2" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="9s" repeatCount="indefinite" path="M 90 150 L 230 150 L 230 60 L 510 60 L 510 150"/></circle><path d="M 90 150 L 90 240 L 370 240 L 370 150 L 510 150" fill="none" stroke="#1f4ac2" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#1f4ac2" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="11s" repeatCount="indefinite" path="M 90 150 L 90 240 L 370 240 L 370 150 L 510 150"/></circle><path d="M 90 150 L 230 150 L 230 240 L 510 240" fill="none" stroke="#d3401f" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#d3401f" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="8s" repeatCount="indefinite" path="M 90 150 L 230 150 L 230 240 L 510 240"/></circle><circle cx="510" cy="60" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="0s" repeatCount="indefinite"/></circle><circle cx="370" cy="240" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="1.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="1.3s" repeatCount="indefinite"/></circle><circle cx="510" cy="240" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="2.6s" repeatCount="indefinite"/></circle><rect x="76" y="136" width="28" height="28" fill="#211e19"/><text x="90" y="186" text-anchor="middle" font-size="10" fill="#211e19">depot</text><rect x="420" y="268" width="166" height="24" fill="#f7f3ea"/><circle cx="432" cy="280" r="5" fill="#1f4ac2"/><text x="442" y="284" font-size="9.5" fill="#5d574c">vehicle</text><circle cx="506" cy="280" r="5" fill="none" stroke="#d3401f" stroke-width="2"/><text x="516" y="284" font-size="9.5" fill="#5d574c">new event</text></svg></figure>
   <p class="figcap">fig. illustration: routes update as events stream in.</p>
   <h2>The work</h2>
@@ -126,8 +126,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
     <span class="tag">Activators</span>
     <span class="tag">VRP</span>
   </div>
-  <h2>What it taught me</h2>
-  <p class="lesson">Batch thinking dies hard. Designing for streams means accepting that the answer is always provisional, and building the system to embrace that.</p>
+  <h2>Key takeaway</h2>
+  <p class="lesson">Streaming data needs a different design from batch pipelines: routes have to be updated continuously as new events arrive, not once a day.</p>
 </main>
 <footer class="colophon">
   <div>© <span id="yr"></span> Audrius Šaras</div>

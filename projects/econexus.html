@@ -60,7 +60,7 @@ ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
 ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
-.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: normal; color: var(--ink-soft); }
 .btn {
   display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
   text-transform: uppercase; text-decoration: none; padding: 13px 26px;
@@ -100,8 +100,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 </header>
 <main>
   <div class="meta"><span>2024 · RSM FinTech project</span> <span class="stamp">built · 2024</span></div>
-  <h1>EcoNexus: where finance meets <em>ESG.</em></h1>
-  <p class="dek">Cheapest supplier, or greenest supplier? Wrong question. EcoNexus computes the trade-off instead of arguing about it.</p>
+  <h1>EcoNexus: cost versus <em>sustainability.</em></h1>
+  <p class="dek">A prototype that helps coffee companies choose suppliers by balancing cost against sustainability goals.</p>
   <h2>What it is</h2>
   <p>A SaaS prototype built for the RSM FinTech course. EcoNexus helps coffee companies select suppliers by balancing financial goals (cost minimisation) with ESG goals (water usage) through weighted goal programming, a multi-objective optimisation technique where the company sets the weights.</p>
   <p>The initial focus is the coffee industry, where sustainable sourcing is paramount for players like Starbucks, Nespresso and JDE. The tool takes supplier attributes, demand and goal weights, then returns a prescriptive sourcing plan plus dynamic scenario analysis for when supplier information is uncertain.</p>
@@ -123,8 +123,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
     <span class="tag">ESG</span>
     <span class="tag">Python</span>
   </div>
-  <h2>What it taught me</h2>
-  <p class="lesson">Sustainability disputes dissolve surprisingly fast once you turn them into an objective function with explicit weights.</p>
+  <h2>Key takeaway</h2>
+  <p class="lesson">Making the weights between cost and sustainability explicit turned a debate into a choice the user can adjust and compare.</p>
   <h2>Links</h2>
   <div><a class="btn" href="https://github.com/sarasaudrius/FinTech-EcoNexus-Project" target="_blank" rel="noopener">View the code on GitHub</a></div>
 </main>

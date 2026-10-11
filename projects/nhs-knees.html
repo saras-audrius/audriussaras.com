@@ -60,7 +60,7 @@ ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
 ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
-.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: normal; color: var(--ink-soft); }
 .btn {
   display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
   text-transform: uppercase; text-decoration: none; padding: 13px 26px;
@@ -86,7 +86,7 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 <main>
   <div class="meta"><span>2026 · EAISI capstone, TU/e</span> <span class="stamp">built · 2026</span></div>
   <h1>Predicting <em>knee replacement</em> outcomes.</h1>
-  <p class="dek">Up to a quarter of knee replacement patients still report pain a year after surgery. Can we see it coming before the operation?</p>
+  <p class="dek">Predicting, before surgery, which knee replacement patients are likely to have a poor outcome.</p>
   <h2>What it is</h2>
   <p>Group project at the Eindhoven AI Systems Institute, built on NHS Digital PROMs data (patient-reported outcome measures for hip and knee replacements). The clinical question: which patients will have a poor outcome from total joint replacement, predicted using only information available before surgery?</p>
   <p>The problem is heavily imbalanced, so the work centred on the precision-recall trade-off and on decision thresholds a clinician could defend in practice, not just a leaderboard metric.</p>
@@ -113,8 +113,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
     <span class="tag">SHAP</span>
     <span class="tag">SMOTE</span>
   </div>
-  <h2>What it taught me</h2>
-  <p class="lesson">When the unit of analysis is a patient, the decision threshold is not a hyperparameter. It is the whole point.</p>
+  <h2>Key takeaway</h2>
+  <p class="lesson">With imbalanced clinical data, accuracy says little. The useful work was choosing a decision threshold based on what it means for patients, and keeping the model explainable.</p>
   <h2>Links</h2>
   <div><a class="btn" href="https://github.com/saras-audrius/EAISI-Group-Project---NHS" target="_blank" rel="noopener">View the code on GitHub</a></div>
 </main>

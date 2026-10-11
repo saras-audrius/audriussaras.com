@@ -60,7 +60,7 @@ ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
 ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
-.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: normal; color: var(--ink-soft); }
 .btn {
   display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
   text-transform: uppercase; text-decoration: none; padding: 13px 26px;
@@ -86,7 +86,7 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 <main>
   <div class="meta"><span>2024 · Unilever &times; RSM master thesis</span> <span class="stamp">built · 2024</span></div>
   <h1>Forecasting SKU sales value share with <em>machine learning.</em></h1>
-  <p class="dek">Written inside Unilever, graded by RSM: can ensemble ML out-forecast classical time-series methods on real FMCG data?</p>
+  <p class="dek">My master thesis at Unilever: can ensemble machine learning forecast SKU sales share better than classical time-series methods?</p>
   <h2>What it is</h2>
   <p>Consumer goods manufacturers live and die by their ability to forecast SKU sales value share: it drives product portfolios and category management. Most forecasting systems still rely on statistical time-series methods, which struggle with complex effects.</p>
   <p>This thesis, written during my Data Analytics placement at Unilever, tests whether ensemble machine learning does better. Random Forest and Gradient Boosting Regressor go head to head with Prophet on a 12-week forecast horizon, with three twists: SKU descriptions transformed into text embeddings to capture latent features, a Targeted Random Forest using LASSO to select predictors, and SHAP values to open the black box.</p>
@@ -109,8 +109,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
     <span class="tag">SHAP</span>
     <span class="tag">Time-series</span>
   </div>
-  <h2>What it taught me</h2>
-  <p class="lesson">The best model is not the most accurate one. It is the most accurate one whose reasoning a planner can inspect and challenge.</p>
+  <h2>Key takeaway</h2>
+  <p class="lesson">Gradient Boosting gave the most accurate forecasts, but the SHAP explanations were what made the results useful to marketing planners.</p>
   <h2>Links</h2>
   <div><a class="btn" href="../assets/thesis.pdf">Read the thesis (PDF)</a></div>
 </main>

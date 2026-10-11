@@ -60,7 +60,7 @@ ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
 ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
-.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: normal; color: var(--ink-soft); }
 .btn {
   display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
   text-transform: uppercase; text-decoration: none; padding: 13px 26px;
@@ -86,7 +86,7 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 <main>
   <div class="meta"><span>Personal research</span> <span class="stamp">paused</span></div>
   <h1>Hibiki LT &harr; EN: <em>real-time speech translation.</em></h1>
-  <p class="dek">Teaching a simultaneous speech translation model a language pair it has never heard: Lithuanian and English. On a laptop.</p>
+  <p class="dek">Adapting a simultaneous speech translation model to Lithuanian and English, running on a laptop.</p>
   <p><em>Status: paused. The dataset pipeline and training fork are built; full fine-tuning is still to come.</em></p>
   <h2>What it is</h2>
   <p>Kyutai's Hibiki translates speech to speech in real time, but only for the language pairs it was trained on. Lithuanian is not one of them. This project adapts Hibiki to LT&nbsp;&harr;&nbsp;EN end to end: dataset construction, synthetic speech generation, a custom fine-tuning fork, and fully on-device inference.</p>
@@ -109,8 +109,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
     <span class="tag">FastAPI</span>
     <span class="tag">Data curation</span>
   </div>
-  <h2>What it taught me</h2>
-  <p class="lesson">Adapting a frontier model to a low-resource language is 10% modelling and 90% building the dataset the model wishes existed.</p>
+  <h2>Key takeaway</h2>
+  <p class="lesson">Most of the effort went into building the dataset rather than the model: curating sentence pairs and generating aligned speech.</p>
 
 </main>
 <footer class="colophon">

@@ -15,7 +15,7 @@ window.caseFiles = [
       "Python",
       "First ML"
     ],
-    "lesson": "Understanding your audience matters as much as the analysis. I still use that every day with clients."
+    "lesson": "Communication science taught me to start from the audience. I still use that when explaining technical work to clients."
   },
   {
     "period": "Feb to Aug 2023 · Microsoft",
@@ -32,7 +32,7 @@ window.caseFiles = [
       "Adoption",
       "Power BI"
     ],
-    "lesson": "Technology only lands when people see what is in it for them. Adoption has to be designed, not hoped for."
+    "lesson": "Driving adoption of the programme showed me that new technology spreads when people can see what it does for their own business."
   },
   {
     "period": "Sep 2023 to Jul 2024 · RSM",
@@ -49,7 +49,7 @@ window.caseFiles = [
       "Causal inference",
       "SQL"
     ],
-    "lesson": "A good model answers a question someone actually has. Starting from the decision, not the data, saves a lot of time."
+    "lesson": "RSM taught me to start from the business question and choose the method after that."
   },
   {
     "period": "Feb to Jul 2024 · Unilever",
@@ -65,7 +65,7 @@ window.caseFiles = [
       "SHAP",
       "Retail analytics"
     ],
-    "lesson": "Accuracy is not enough. Planners trusted the forecasts once they could see why the model said what it said."
+    "lesson": "Gradient Boosting gave the best forecasts, but the SHAP explanations were what made planners trust them."
   },
   {
     "period": "Jul 2024 to now · KPMG",
@@ -86,7 +86,7 @@ window.caseFiles = [
       "Real-time data",
       "CI/CD"
     ],
-    "lesson": "Most AI projects succeed or fail on the data underneath and on whether people actually use them. I try to build for both."
+    "lesson": "Good AI work depends on the data underneath it and on people actually using what we build, so I try to plan for both from the start."
   },
   {
     "period": "May 2025 to Apr 2026 · EAISI",
@@ -102,6 +102,6 @@ window.caseFiles = [
       "Generative AI",
       "MLOps"
     ],
-    "lesson": "Doing it next to a full-time job taught me as much about focus as about AI. Learning never really stops."
+    "lesson": "Doing the post-master alongside a full-time job took a lot of focus, and it deepened my knowledge of ML and AI in ways I use every day."
   }
 ];
