@@ -1156,16 +1156,30 @@ const STEPS = [
   { label: "KPMG",     logo: "kpmg",      year: "2024", v: 8.0 },
   { label: "EAISI",    logo: "eaisi",     year: "2025", v: 8.5, edu: true },
 ];
-const NEXT_STEPS = [            // candidate classes for step 7 and their (made-up) probabilities
-  ["Manager, AI & Data", 0.24],
-  ["Lead AI Engineer", 0.22],
-  ["AI Architect", 0.18],
-  ["Speaker at FabCon 2027", 0.14],
-  ["Guest lecturer at EAISI", 0.09],
-  ["Finally fluent in Dutch", 0.07],
-  ["Opens a restaurant", 0.04],
+const NEXT_STEPS = [            // candidate classes for step 7 and their (made-up) base probabilities
+  ["Manager, AI & Data", 0.12],
+  ["Lead AI Engineer", 0.11],
+  ["AI Architect", 0.10],
+  ["Speaker at FabCon 2027", 0.09],
+  ["AI product lead", 0.07],
+  ["Guest lecturer at EAISI", 0.07],
+  ["PhD in healthcare AI", 0.06],
+  ["Builds an agent that writes his monthly brag log", 0.06],
+  ["Hibiki finally speaks Lithuanian", 0.06],
+  ["Writes a book on AI that actually gets used", 0.05],
+  ["Runs a full marathon", 0.05],
+  ["Finally fluent in Dutch", 0.05],
+  ["Data & AI Partner, eventually", 0.04],
+  ["Opens a restaurant", 0.03],
+  ["Teaches his parents to use ChatGPT", 0.02],
   ["Professional basketball player", 0.02],
 ];
+const TOASTS = {
+  "Professional basketball player": "outlier detected. the model is 98% sure this won't happen. a man can dream.",
+  "Opens a restaurant": "one new recipe a week, compounding.",
+  "Hibiki finally speaks Lithuanian": "the model is optimistic about side projects.",
+  "Builds an agent that writes his monthly brag log": "very meta. also, honestly, plausible.",
+};
 const SVGNS = "http://www.w3.org/2000/svg";
 const X = i => 80 + i * 64;                 // step index 0..6 -> px (step 7 = index 6)
 const Y = v => 370 - v * 27;                // technical depth -> px
@@ -1265,7 +1279,17 @@ const predOut = document.getElementById("predOut"), predProbs = document.getElem
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let runs = 0, busy = false;
 const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
-const sampleClass = () => { let r = Math.random(); for (const [name, p] of NEXT_STEPS) { if ((r -= p) <= 0) return [name, p]; } return NEXT_STEPS[0]; };
+let lastPick = null;
+function runModel() {
+  // each run re-rolls the model: noisy logits -> softmax, the previous answer excluded
+  const logits = NEXT_STEPS.map(([name, p]) => name === lastPick ? -Infinity : Math.log(p) + gauss() * 0.6);
+  const mxl = Math.max(...logits), ex = logits.map(l => Math.exp(l - mxl)), z = ex.reduce((x, y) => x + y);
+  const probs = NEXT_STEPS.map(([name], k) => [name, ex[k] / z]);
+  let r = Math.random(), pick = probs[0];
+  for (const pr of probs) { if ((r -= pr[1]) <= 0) { pick = pr; break; } }
+  lastPick = pick[0];
+  return { probs, pick };
+}
 function placePred(v) {
   const x = X(6), y = Y(clampY(v));
   predPt.setAttribute("cx", x); predPt.setAttribute("cy", y);
@@ -1273,10 +1297,13 @@ function placePred(v) {
   predQ.setAttribute("x", x); predQ.setAttribute("y", y - 14);
   predStem.setAttribute("x1", X(5)); predStem.setAttribute("y1", Y(STEPS[5].v)); predStem.setAttribute("x2", x); predStem.setAttribute("y2", y);
 }
-function renderProbs(pick) {
+function renderProbs(probs, pick) {
+  const top = probs.slice().sort((x, y) => y[1] - x[1]).slice(0, 6);
+  if (!top.some(([name]) => name === pick)) top[5] = probs.find(([name]) => name === pick);
+  const max = top[0][1];
   predProbs.hidden = false;
-  predProbs.innerHTML = NEXT_STEPS.map(([name, p]) =>
-    `<div class="prob${name === pick ? " pick" : ""}"><span class="pn">${name}</span><span class="pb"><i style="width:${Math.round(p / NEXT_STEPS[0][1] * 100)}%"></i></span><span class="pp">${p.toFixed(2)}</span></div>`).join("");
+  predProbs.innerHTML = top.map(([name, p]) =>
+    `<div class="prob${name === pick ? " pick" : ""}"><span class="pn" title="${name}">${name}</span><span class="pb"><i style="width:${Math.round(p / max * 100)}%"></i></span><span class="pp">${p.toFixed(2)}</span></div>`).join("");
 }
 predictBtn.addEventListener("click", () => {
   if (busy) return;
@@ -1286,7 +1313,7 @@ predictBtn.addEventListener("click", () => {
   predictBtn.textContent = "sampling...";
   const mean = model.f(7), sd = model.half(7) / T80;
   const finalV = mean + gauss() * sd;
-  const [name, p] = sampleClass();
+  const { probs, pick: [name, p] } = runModel();
   const frames = reduceMotion ? 0 : 14;
   let k = 0;
   const step = () => {
@@ -1299,11 +1326,10 @@ predictBtn.addEventListener("click", () => {
     placePred(finalV);
     predQ.textContent = "7";
     predOut.innerHTML = `<span class="pl">Step 7:</span> <strong>${name}</strong> <span class="mono">p = ${p.toFixed(2)} &middot; run ${runs}</span>`;
-    renderProbs(name);
+    renderProbs(probs, name);
     predictBtn.textContent = "Predict again";
     busy = false;
-    if (name === "Professional basketball player") showToast("outlier detected. the model is 98% sure this won't happen. a man can dream.", 3600);
-    if (name === "Opens a restaurant") showToast("one new recipe a week, compounding.", 3000);
+    if (TOASTS[name]) showToast(TOASTS[name], 3600);
   };
   step();
 });
