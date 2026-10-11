@@ -76,6 +76,21 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
 }
 .colophon a { color: inherit; }
 @media (max-width: 640px) { main { padding: 50px 24px 80px; } }
+.media { margin: 26px 0 8px; border: 1.5px solid var(--ink); background: var(--paper); overflow: hidden; }
+.media > svg, .media > img { display: block; width: 100%; height: auto; }
+.media svg text { font-family: var(--mono); }
+.media svg text.serif { font-family: var(--serif); }
+.media svg text.tiny { font-size: 10px; }
+.figcap { font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); margin: 0 0 22px; line-height: 1.5; }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+@media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }
+.flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -14; } }
+.agent-dot, .hub-new { animation: agentpulse 2s ease-in-out infinite; }
+@keyframes agentpulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.bar-grow { transform-box: fill-box; transform-origin: left; animation: barin 1.1s cubic-bezier(0.3, 0.7, 0.2, 1) both; }
+@keyframes barin { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .flow, .agent-dot, .hub-new, .bar-grow { animation: none; } }
 </style>
 </head>
 <body>
@@ -90,6 +105,8 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
   <h2>What it is</h2>
   <p>A SaaS prototype built for the RSM FinTech course. EcoNexus helps coffee companies select suppliers by balancing financial goals (cost minimisation) with ESG goals (water usage) through weighted goal programming, a multi-objective optimisation technique where the company sets the weights.</p>
   <p>The initial focus is the coffee industry, where sustainable sourcing is paramount for players like Starbucks, Nespresso and JDE. The tool takes supplier attributes, demand and goal weights, then returns a prescriptive sourcing plan plus dynamic scenario analysis for when supplier information is uncertain.</p>
+  <figure class="media"><svg viewBox="0 0 600 300" aria-hidden="true"><line x1="60" y1="250" x2="560" y2="250" stroke="#211e19" stroke-width="1.5"/><line x1="60" y1="30" x2="60" y2="250" stroke="#211e19" stroke-width="1.5"/><text x="560" y="272" text-anchor="end" font-size="10" fill="#5d574c">cost →</text><text x="-250" y="44" transform="rotate(-90)" font-size="10" fill="#5d574c">water use →</text><circle cx="150" cy="110" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="210" cy="80" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="300" cy="120" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="380" cy="90" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="450" cy="130" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="340" cy="170" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="470" cy="70" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="520" cy="110" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><path d="M 90 70 L 120 120 L 160 160 L 210 190 L 270 210 L 340 224 L 420 232 L 510 236" fill="none" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="4 4"/><circle cx="90" cy="70" r="5.5" fill="#1f4ac2"/><circle cx="120" cy="120" r="5.5" fill="#1f4ac2"/><circle cx="160" cy="160" r="5.5" fill="#1f4ac2"/><circle cx="210" cy="190" r="5.5" fill="#1f4ac2"/><circle cx="270" cy="210" r="5.5" fill="#1f4ac2"/><circle cx="340" cy="224" r="5.5" fill="#1f4ac2"/><circle cx="420" cy="232" r="5.5" fill="#1f4ac2"/><circle cx="510" cy="236" r="5.5" fill="#1f4ac2"/><circle cx="210" cy="190" r="11" fill="none" stroke="#d3401f" stroke-width="2.5"/><text x="226" y="178" font-size="10.5" fill="#d3401f">the weights pick this one</text><text x="350" y="214" font-size="10" fill="#1f4ac2">efficient supplier mixes</text></svg></figure>
+  <p class="figcap">fig. the trade-off between cost and water use. goal weights choose the point.</p>
   <h2>The work</h2>
   <ul>
     <li>Formulated supplier selection as a weighted goal programming problem with demand and capacity constraints</li>
@@ -112,7 +129,7 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
   <div><a class="btn" href="https://github.com/sarasaudrius/FinTech-EcoNexus-Project" target="_blank" rel="noopener">View the code on GitHub</a></div>
 </main>
 <footer class="colophon">
-  <div>© <span id="yr"></span> Audrius Šaras · no cookies, only priors</div>
+  <div>© <span id="yr"></span> Audrius Šaras</div>
   <div><a href="../index.html">back to the chart</a></div>
 </footer>
 <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>

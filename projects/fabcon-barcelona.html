@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Notebook to Bedside, FabCon Europe 2026 · Audrius Šaras</title>
+<meta name="description" content="From Notebook to Bedside: a clinical risk prediction pipeline and clinician app built in Microsoft Fabric, co-presented at FabCon Europe 2026 in Barcelona.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f7f3ea'/><path d='M15 80 L35 62 L55 48 L75 30 L88 16' stroke='%231f4ac2' stroke-width='8' fill='none' stroke-linecap='round'/><circle cx='88' cy='16' r='9' fill='%23d3401f'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Azeret+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f3ea; --paper-2: #efe9db; --ink: #211e19; --ink-soft: #5d574c;
+  --blue: #1f4ac2; --red: #d3401f; --grid: rgba(33, 30, 25, 0.07);
+  --serif: "Newsreader", Georgia, serif; --mono: "Azeret Mono", ui-monospace, monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+::selection { background: var(--blue); color: var(--paper); }
+body {
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    var(--paper);
+  background-size: 48px 48px, 48px 48px, auto;
+  color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.65;
+}
+.masthead {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 20px 36px; border-bottom: 2px solid var(--ink);
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--paper); position: sticky; top: 0; z-index: 50;
+}
+.masthead a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+.masthead a:hover { border-color: var(--red); color: var(--red); }
+main { max-width: 820px; margin: 0 auto; padding: 70px 36px 100px; }
+.meta {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 20px;
+}
+.stamp {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 10px; border: 1.5px solid var(--ink-soft); color: var(--ink-soft);
+  transform: rotate(2deg); display: inline-flex; align-items: center; gap: 7px; background: var(--paper);
+}
+.stamp.now { border-color: var(--red); color: var(--red); }
+.stamp .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(211,64,31,0.45); } 50% { box-shadow: 0 0 0 7px rgba(211,64,31,0); } }
+h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 380; line-height: 1.05; letter-spacing: -0.015em; }
+h1 em { font-style: italic; color: var(--blue); }
+.dek { margin-top: 18px; font-size: 20px; font-style: italic; color: var(--ink-soft); max-width: 640px; }
+h2 {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--red); margin: 44px 0 14px;
+}
+p { margin-bottom: 16px; }
+ul { list-style: none; }
+ul li { padding-left: 22px; position: relative; margin-bottom: 8px; }
+ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue); font-family: var(--mono); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 5px 12px; border: 1px solid var(--ink); }
+.lesson { border-left: 3px solid var(--red); padding: 6px 0 6px 18px; font-style: italic; color: var(--ink-soft); }
+.btn {
+  display: inline-block; font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none; padding: 13px 26px;
+  background: var(--ink); color: var(--paper); border: 2px solid var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; margin-right: 16px; margin-bottom: 10px;
+}
+.btn:hover { transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--blue); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { box-shadow: 5px 5px 0 var(--red); }
+.colophon {
+  border-top: 2px solid var(--ink); padding: 24px 36px; display: flex; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); background: var(--paper);
+}
+.colophon a { color: inherit; }
+@media (max-width: 640px) { main { padding: 50px 24px 80px; } }
+.media { margin: 26px 0 8px; border: 1.5px solid var(--ink); background: var(--paper); overflow: hidden; }
+.media > svg, .media > img { display: block; width: 100%; height: auto; }
+.media svg text { font-family: var(--mono); }
+.media svg text.serif { font-family: var(--serif); }
+.media svg text.tiny { font-size: 10px; }
+.figcap { font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); margin: 0 0 22px; line-height: 1.5; }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+@media (max-width: 640px) { .gallery { grid-template-columns: 1fr; } }
+.flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -14; } }
+.agent-dot, .hub-new { animation: agentpulse 2s ease-in-out infinite; }
+@keyframes agentpulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.bar-grow { transform-box: fill-box; transform-origin: left; animation: barin 1.1s cubic-bezier(0.3, 0.7, 0.2, 1) both; }
+@keyframes barin { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .flow, .agent-dot, .hub-new, .bar-grow { animation: none; } }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div><a href="../index.html"><strong>A. ŠARAS</strong></a></div>
+  <nav><a href="../index.html#projects">back to projects</a></nav>
+</header>
+<main>
+  <div class="meta"><span>1 October 2026 · FabCon Europe, Barcelona</span> <span class="stamp">spoke · oct 2026</span></div>
+  <h1>From Notebook to <em>Bedside.</em></h1>
+  <p class="dek">A clinical risk prediction model taken all the way from a notebook to an app a clinician could use, built end to end in Microsoft Fabric. Co-presented at FabCon Europe 2026.</p>
+  <figure class="media"><img src="../assets/media/fabcon/rayfin-overview.jpg" alt="Overview screen of the clinician app: a clinician's pre-operative list against the whole service"></figure>
+  <p class="figcap">Overview: a clinician's list against the whole service. Screenshots are from the offline demo build: the hospital is fictional and every patient is synthetic.</p>
+  <h2>What it is</h2>
+  <p>The talk started from our EAISI capstone: a model that predicts, before surgery, which knee replacement patients are likely to have a poor outcome, trained on the public NHS PROMs data. For FabCon we rebuilt it as a production-style pipeline in Microsoft Fabric, put a governed clinician app on top, and walked 50+ attendees through every step.</p>
+  <p>A poor outcome is defined clinically: an Oxford Knee Score gain of 7 points or fewer six months after surgery, at or below the smallest change a patient reliably notices.</p>
+  <h2>The pipeline</h2>
+  <ul>
+    <li>Bronze, silver and gold: raw NHS PROMs files ingested and cleaned into Delta tables with PySpark notebooks</li>
+    <li>Training tracked in MLflow and registered in Fabric, with a hyperparameter search, threshold analysis and subgroup checks</li>
+    <li>A calibrated Explainable Boosting Machine, so every score comes with the model's own reasoning, and SHAP as a contrast</li>
+    <li>Batch scoring writes risk scores and explanations back to gold, then syncs them to a SQL database in Fabric</li>
+  </ul>
+  <h2>The app</h2>
+  <ul>
+    <li>Built with Rayfin: a code-first data model in TypeScript becomes a SQL database, a GraphQL API, Entra ID sign-in and hosting, all inside Fabric</li>
+    <li>Row-level security, so clinicians only see their own patients</li>
+    <li>An Ask page that answers questions from the governed tables, optionally through a Fabric Data Agent, and declines what it cannot ground</li>
+    <li>Every clinician decision, agreement or override, is recorded against the model version: the human-oversight record</li>
+  </ul>
+  <div class="gallery">
+    <div><figure class="media"><img src="../assets/media/fabcon/rayfin-patient.jpg" alt="Patient screen with a calibrated risk score, its explanation and the decision form" loading="lazy"></figure>
+    <p class="figcap">Patient: a calibrated probability, explained, next to the decision form.</p></div>
+    <div><figure class="media"><img src="../assets/media/fabcon/rayfin-worklist.jpg" alt="Worklist of patients with risk, leading factor and review status" loading="lazy"></figure>
+    <p class="figcap">Worklist: risk, the leading factor and review status per patient.</p></div>
+    <div><figure class="media"><img src="../assets/media/fabcon/rayfin-ask.jpg" alt="Ask screen answering a question from the governed tables" loading="lazy"></figure>
+    <p class="figcap">Ask: answers grounded in the governed tables, with the query shown.</p></div>
+  </div>
+  <h2>Concepts</h2>
+  <div class="tags">
+    <span class="tag">Microsoft Fabric</span>
+    <span class="tag">Medallion architecture</span>
+    <span class="tag">PySpark</span>
+    <span class="tag">MLflow</span>
+    <span class="tag">Explainable boosting</span>
+    <span class="tag">Calibration</span>
+    <span class="tag">Rayfin</span>
+    <span class="tag">Row-level security</span>
+    <span class="tag">Fabric Data Agent</span>
+    <span class="tag">Responsible AI</span>
+  </div>
+  <h2>What it taught me</h2>
+  <p class="lesson">In healthcare the model is the easy part. Calibration, explanations and a record of who decided what are what make a score usable at the bedside.</p>
+  <h2>Related</h2>
+  <div><a class="btn ghost" href="nhs-knees.html">The original EAISI capstone</a></div>
+</main>
+<footer class="colophon">
+  <div>© <span id="yr"></span> Audrius Šaras</div>
+  <div><a href="../index.html">back to the chart</a></div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
