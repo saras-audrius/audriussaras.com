@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audrius Šaras · Data &amp; AI Engineer</title>
-<meta name="description" content="Audrius Šaras is a Data & AI Engineer at KPMG. End-to-end data and AI solutions, decision science, and on-device ML research. Creator of Hibiki LT-EN speech translation.">
-<meta property="og:title" content="Audrius Šaras · Data &amp; AI Engineer">
-<meta property="og:description" content="End-to-end data and AI solutions at KPMG. Better data, better decisions. The whole trajectory, rendered as a chart.">
+<title>Audrius Šaras · Senior Tech Consultant &amp; AI Engineer</title>
+<meta name="description" content="Audrius Šaras is a Senior Tech Consultant and AI Engineer at KPMG, building AI agents and the data platforms underneath them.">
+<meta property="og:title" content="Audrius Šaras · Senior Tech Consultant &amp; AI Engineer">
+<meta property="og:description" content="AI agents and data platforms at KPMG. The career, plotted, with a model that predicts the next step.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f7f3ea'/><path d='M15 80 L35 62 L55 48 L75 30 L88 16' stroke='%231f4ac2' stroke-width='8' fill='none' stroke-linecap='round'/><circle cx='88' cy='16' r='9' fill='%23d3401f'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -660,8 +660,28 @@ a.cert { display: block; text-decoration: none; color: inherit; }
   border-bottom: 1px solid rgba(31, 74, 194, 0.35);
 }
 .certs-details summary:hover .cert-cue { color: var(--red); border-color: var(--red); }
-.cert-cue::after { content: "unfold the list"; }
-.certs-details[open] .cert-cue::after { content: "fold the list away"; }
+.cert-cue::after { content: "show the list"; }
+.certs-details[open] .cert-cue::after { content: "hide the list"; }
+
+/* ---------- predict ---------- */
+.predict-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--paper-2); }
+.btn.predict { padding: 10px 18px; font-size: 12px; background: var(--blue); border-color: var(--blue); }
+.btn.predict:hover { box-shadow: 5px 5px 0 var(--red); }
+.pred-out { font-size: 16px; line-height: 1.3; min-height: 1.3em; }
+.pred-out .mono { font-size: 11.5px; color: var(--ink-soft); }
+.pred-out strong { font-weight: 500; color: var(--blue); }
+.pred-out .pl { font-family: var(--mono); font-size: 11.5px; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; }
+.pred-probs { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; margin-top: 10px; font-size: 10px; color: var(--ink-soft); }
+.prob { display: grid; grid-template-columns: 1fr 44px 28px; gap: 6px; align-items: center; }
+.prob .pn { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prob .pb { height: 5px; background: var(--paper-2); }
+.prob .pb i { display: block; height: 100%; background: rgba(31, 74, 194, 0.35); }
+.prob .pp { text-align: right; }
+.prob.pick { color: var(--blue); font-weight: 500; }
+.prob.pick .pb i { background: var(--blue); }
+#predRing { animation: nowring 1.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+#forecastZone, #predGroup { transition: opacity 0.6s ease; }
+@media (max-width: 880px) { .pred-probs, .chart-foot { display: none; } .chart-wrap { padding: 16px 14px 12px; } .chart-wrap .chart-title { font-size: 10px; } .pred-out { font-size: 15px; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
@@ -685,7 +705,7 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-copy">
-    <div class="kicker">Data &times; AI Engineer &middot; KPMG</div>
+    <div class="kicker">Senior Tech Consultant &amp; AI Engineer &middot; KPMG</div>
     <h1>
       Audrius<br>
       <span class="ital scribble">Šaras.
@@ -695,9 +715,9 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       </span>
     </h1>
     <p class="dek">
-      From communication science to <strong>AI engineering</strong>. I build
-      end-to-end data and AI solutions at KPMG, helping clients make better
-      decisions on strong data foundations.
+      From communication science to <strong>AI engineering</strong>. At KPMG I
+      build AI agents and the data platforms underneath them, and help clients
+      choose the AI that actually fits their problem.
     </p>
     <div class="cta-row">
       <a class="btn" href="mailto:sarasaudrius@gmail.com">Contact</a>
@@ -712,16 +732,16 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 <!-- FORKS -->
 <section class="forks" id="paths" aria-label="Choose a path">
   <button class="fork" id="forkJourney" aria-expanded="false" aria-controls="journey">
-    <div class="fork-kicker">path a &middot; the person</div>
-    <h2>The career, <em>plotted.</em></h2>
-    <p>Six points, two lines, and one pivot from business to technical.</p>
-    <span class="fork-cue">open this branch</span>
+    <div class="fork-kicker">01 &middot; career</div>
+    <h2>Experience &amp; <em>education.</em></h2>
+    <p>Six steps from communication science to AI engineering, plotted, with a model that predicts the next one.</p>
+    <span class="fork-cue">view</span>
   </button>
   <button class="fork" id="forkProjects" aria-expanded="false" aria-controls="projects">
-    <div class="fork-kicker">path b &middot; the evidence</div>
-    <h2>The projects, <em>documented.</em></h2>
-    <p>Speech translation, surgery outcomes, supply chains. Each with its own page.</p>
-    <span class="fork-cue">open this branch</span>
+    <div class="fork-kicker">02 &middot; projects</div>
+    <h2>Projects &amp; <em>talks.</em></h2>
+    <p>AI agents, data platforms, real-time systems and healthcare ML, most with a full write-up.</p>
+    <span class="fork-cue">view</span>
   </button>
 </section>
 
@@ -729,97 +749,62 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 <div class="branch" id="journey" hidden>
 <div class="sect-head">
   <p class="note">
-    Two lines, six points: education in dashed red, work in solid blue.
-    Click any point or chapter to open the case file.
+    Education in dashed red, work in solid blue. Scroll through the six steps or
+    click any point for details. At the end, a small model forecasts step seven.
   </p>
 </div>
 
 <section class="scrolly">
   <div class="chart-wrap">
     <div class="chart-title mono">
-      <span>CAREER TRAJECTORY (OBSERVED)</span>
-      <span class="r2" id="r2label" title="this number is honest. unless you type a certain seven-letter word.">R&sup2; = 0.94</span>
+      <span>CAREER TRAJECTORY + FORECAST</span>
+      <span class="r2" id="r2label" title="computed live from the six points. unless you type a certain seven-letter word.">R&sup2; = 0.89</span>
     </div>
-    <svg id="careerChart" viewBox="0 0 600 420" role="img" aria-label="Career chart with two series. Education in red: University of Amsterdam, Rotterdam School of Management, EAISI. Work in blue: Microsoft, Unilever, then KPMG continuing to now. Decision quality rising over time.">
+    <svg id="careerChart" viewBox="0 0 600 420" role="img" aria-label="Chart of six career steps. Education in red: University of Amsterdam, Rotterdam School of Management, EAISI. Work in blue: Microsoft, Unilever, KPMG. A fitted trend line rises from business towards technical work, with a forecast for step seven.">
       <defs>
         <clipPath id="eduClip"><rect id="eduClipRect" x="0" y="0" width="0" height="420"/></clipPath>
         <clipPath id="workClip"><rect id="workClipRect" x="0" y="0" width="0" height="420"/></clipPath>
       </defs>
-
-      <!-- axes -->
       <line x1="50" y1="20" x2="50" y2="370" stroke="#211e19" stroke-width="2"/>
       <line x1="50" y1="370" x2="580" y2="370" stroke="#211e19" stroke-width="2"/>
-      <text class="axis-label-y" id="yAxisLabel" x="-220" y="22" transform="rotate(-90)"
-        font-family="Azeret Mono" font-size="11" fill="#5d574c">decision quality<title>every good axis deserves a click</title></text>
-      <text class="axis-label-y" x="-345" y="22" transform="rotate(-90)" font-family="Azeret Mono"
-        font-size="9" fill="#d3401f" opacity="0.75" id="yAxisHint">(click me)</text>
-      <text x="548" y="394" font-family="Azeret Mono" font-size="11" fill="#5d574c">time</text>
-
-      <!-- x-axis year ticks -->
-      <g font-family="Azeret Mono" font-size="9.5" fill="#5d574c">
-        <text x="80"  y="384" text-anchor="middle">2020</text>
-        <text x="205" y="384" text-anchor="middle">2023</text>
-        <text x="330" y="384" text-anchor="middle">2024</text>
-        <text x="455" y="384" text-anchor="middle">2025</text>
-        <text x="565" y="384" text-anchor="middle">now</text>
-      </g>
-
-      <!-- gridlines -->
+      <text x="-370" y="30" transform="rotate(-90)" font-family="Azeret Mono" font-size="11" fill="#5d574c">technical depth &rarr;</text>
+      <text x="580" y="410" text-anchor="end" font-family="Azeret Mono" font-size="11" fill="#5d574c">career step &rarr;</text>
       <g stroke="rgba(33,30,25,0.08)" stroke-width="1">
         <line x1="50" y1="280" x2="580" y2="280"/>
         <line x1="50" y1="190" x2="580" y2="190"/>
         <line x1="50" y1="100" x2="580" y2="100"/>
       </g>
-
-      <!-- legend -->
-      <g font-family="Azeret Mono" font-size="10">
-        <line x1="70" y1="34" x2="98" y2="34" stroke="#1f4ac2" stroke-width="3"/>
-        <text x="104" y="38" fill="#211e19">work</text>
-        <line x1="70" y1="52" x2="98" y2="52" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5"/>
-        <text x="104" y="56" fill="#211e19">education</text>
+      <g font-family="Azeret Mono" font-size="10" fill="#211e19">
+        <line x1="70" y1="34" x2="98" y2="34" stroke="#1f4ac2" stroke-width="3"/><text x="104" y="38">work</text>
+        <line x1="70" y1="52" x2="98" y2="52" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5"/><text x="104" y="56">education</text>
+        <line x1="70" y1="70" x2="98" y2="70" stroke="#211e19" stroke-width="1.5" stroke-dasharray="2 4"/><text x="104" y="74">trend (OLS)</text>
+        <rect x="70" y="82" width="28" height="10" fill="rgba(31,74,194,0.14)"/><text x="104" y="92">80% prediction interval</text>
       </g>
-
-      <!-- hidden outlier -->
-      <circle id="outlier" cx="318" cy="350" r="5" fill="rgba(211,64,31,0.3)" stroke="rgba(211,64,31,0.45)" style="cursor:help"/>
-
-      <!-- education series (dashed red) -->
-      <path id="eduPath" d="M 80 300 L 250 210 L 525 60"
-        fill="none" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" clip-path="url(#eduClip)"/>
-
-      <!-- work series (solid blue) -->
-      <path id="workPath" d="M 175 330 L 325 250 L 415 190"
-        fill="none" stroke="#1f4ac2" stroke-width="3.5" stroke-linecap="round" clip-path="url(#workClip)"/>
-
-      <!-- ongoing: KPMG extends to now -->
-      <g id="nowGroup" opacity="0">
-        <path id="extPath" d="M 415 190 L 572 140" fill="none" stroke="#1f4ac2" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round"/>
-        <circle id="nowCore" cx="572" cy="140" r="5" fill="#1f4ac2"/>
-        <circle id="nowRing" cx="572" cy="140" r="5" fill="none" stroke="#1f4ac2" stroke-width="1.5"/>
-        <text id="nowText" x="562" y="126" font-family="Azeret Mono" font-size="10" fill="#1f4ac2">now</text>
+      <g id="xTicks" font-family="Azeret Mono" font-size="9.5" fill="#5d574c"></g>
+      <g id="forecastZone" opacity="0">
+        <line x1="432" y1="22" x2="432" y2="370" stroke="#5d574c" stroke-width="1" stroke-dasharray="2 4"/>
+        <text x="438" y="30" font-family="Azeret Mono" font-size="9.5" fill="#5d574c">forecast</text>
+        <path id="piBand" fill="rgba(31,74,194,0.14)"/>
+        <path id="trendPath" fill="none" stroke="#211e19" stroke-width="1.5" stroke-dasharray="2 4"/>
       </g>
-
-      <!-- data points -->
-      <g id="pts">
-        <circle class="pt-hit" data-i="0" cx="80"  cy="300" r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
-        <circle class="pt-hit" data-i="1" cx="175" cy="330" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
-        <circle class="pt-hit" data-i="2" cx="250" cy="210" r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
-        <circle class="pt-hit" data-i="3" cx="325" cy="250" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
-        <circle class="pt-hit" data-i="4" cx="415" cy="190" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
-        <circle class="pt-hit" data-i="5" cx="525" cy="60"  r="7" fill="#f7f3ea" stroke="#d3401f" stroke-width="3"/>
-      </g>
-
-      <!-- point labels: replaced by logos when assets/logos/*.png exist -->
-      <g font-family="Azeret Mono" font-size="10.5" fill="#211e19" id="ptLabels">
-        <text x="80"  y="282" text-anchor="middle">UVA</text>
-        <text x="175" y="356" text-anchor="middle">MSFT</text>
-        <text x="250" y="192" text-anchor="middle">RSM</text>
-        <text x="325" y="276" text-anchor="middle">UNILEVER</text>
-        <text x="415" y="216" text-anchor="middle">KPMG</text>
-        <text x="525" y="42"  text-anchor="middle">EAISI</text>
-      </g>
+      <path id="eduPath" fill="none" stroke="#d3401f" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" clip-path="url(#eduClip)"/>
+      <path id="workPath" fill="none" stroke="#1f4ac2" stroke-width="3.5" stroke-linecap="round" clip-path="url(#workClip)"/>
+      <g id="pts"></g>
+      <g id="ptLabels" font-family="Azeret Mono" font-size="10.5" fill="#211e19"></g>
       <g id="ptLogos"></g>
+      <g id="predGroup" opacity="0">
+        <line id="predStem" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle id="predRing" r="7" fill="none" stroke="#1f4ac2" stroke-width="1.5"/>
+        <circle id="predPt" r="7" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="3"/>
+        <text id="predQ" text-anchor="middle" font-family="Azeret Mono" font-size="10" font-weight="600" fill="#1f4ac2">?</text>
+      </g>
     </svg>
-    <div class="chart-foot">* honest number. typing the word "overfit" on this page breaks it.</div>
+    <div class="predict-row">
+      <button class="btn predict" id="predictBtn" type="button">Predict next step</button>
+      <div class="pred-out" id="predOut" aria-live="polite"><span class="mono">step 7 is still unobserved.</span></div>
+    </div>
+    <div class="pred-probs mono" id="predProbs" hidden></div>
+    <div class="chart-foot">* ordinary least squares on six points. the y-axis is my own estimate of how technical each step was. predictions are sampled, for fun.</div>
   </div>
 
   <div class="steps" id="steps">
@@ -827,11 +812,7 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">2020 to 2023 <span class="kind">&middot; education</span></div>
         <h3>BSc Communication Science, minor in <em>Data Science &amp; AI.</em></h3>
-        <p>
-          Cum Laude at the University of Amsterdam. Studied how people communicate;
-          the minor taught me how data explains them. First models, first Python,
-          first proof that evidence beats intuition.
-        </p>
+        <p>Cum Laude at the University of Amsterdam. I studied how people communicate, and through the minor, how data can explain it. My first models and my first Python.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -839,12 +820,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
     <div class="step" data-i="1">
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">Feb to Aug 2023 <span class="kind">&middot; Microsoft</span></div>
-        <h3>Leading <em>Azure migrations</em> at big-tech scale.</h3>
-        <p>
-          Partner Development Manager for the SMC business, leading the Azure
-          Migration &amp; Modernization Programme. Where cloud strategy meets
-          the partner ecosystem.
-        </p>
+        <h3>Partner development at <em>Microsoft.</em></h3>
+        <p>Internship in the SMC partner business. I led adoption of the Azure Migration and Modernization Program across the Dutch partner ecosystem, growing usage 5x in 4 months.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -853,11 +830,7 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">Sep 2023 to Jul 2024 <span class="kind">&middot; education</span></div>
         <h3>MSc Business Analytics &amp; Management at <em>RSM.</em></h3>
-        <p>
-          Cum Laude at Rotterdam School of Management. Analytics as a management
-          discipline: machine learning, optimisation, and the business judgment
-          to know which numbers matter.
-        </p>
+        <p>Cum Laude at Rotterdam School of Management. Machine learning, optimisation and causal inference, with a business lens.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -865,12 +838,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
     <div class="step" data-i="3">
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">Feb to Jul 2024 <span class="kind">&middot; Unilever</span></div>
-        <h3>Data analytics where <em>shelves</em> meet spreadsheets.</h3>
-        <p>
-          Customer Development Analytics team. Consumer goods runs on forecasts:
-          demand, retail performance, brands people hold in their hands. Models
-          with consequences you can find in a supermarket.
-        </p>
+        <h3>Data analytics at <em>Unilever.</em></h3>
+        <p>Data Analyst intern in Customer Development Analytics. I analysed shopper data for category marketing teams and wrote my master thesis on forecasting SKU sales with machine learning.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -878,12 +847,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
     <div class="step" data-i="4">
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">Jul 2024 to now <span class="kind">&middot; KPMG</span></div>
-        <h3>Data &amp; AI engineering, <em>in production.</em></h3>
-        <p>
-          Data &amp; AI Engineer in the Microsoft team. Building end-to-end data
-          and AI solutions and consulting clients on better decisions, built on
-          strong data foundations.
-        </p>
+        <h3>AI &amp; data engineering at <em>KPMG.</em></h3>
+        <p>Senior Tech Consultant in the AI &amp; Data team. I build AI agents and Microsoft Fabric data platforms for clients, and advise them on which AI fits their problem.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -891,12 +856,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
     <div class="step" data-i="5">
       <div class="card" role="button" tabindex="0" aria-haspopup="dialog">
         <div class="when">May 2025 to Apr 2026 <span class="kind">&middot; education</span></div>
-        <h3>Post-master in Data Science &amp; AI at <em>EAISI.</em></h3>
-        <p>
-          Professional doctorate-level programme at the Eindhoven AI Systems
-          Institute (TU/e), leading to the certified data scientist title.
-          Trading intuition for rigour, again.
-        </p>
+        <h3>Post-master in Data &amp; AI at <em>EAISI.</em></h3>
+        <p>Mastering Data &amp; AI at the Eindhoven AI Systems Institute (TU/e), completed alongside my job, with the certified data scientist title.</p>
         <span class="more">open the case file</span>
       </div>
     </div>
@@ -908,54 +869,42 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 <!-- PROJECTS BRANCH -->
 <div class="branch" id="projects" hidden>
 <div class="sect-head">
-  <p class="note">Three kinds of evidence: what I build on my own time, what I build at work, and what I built during my degrees. Every card opens a full write-up.</p>
+  <p class="note">What I've built at KPMG and during my studies. Client names stay confidential; most projects have a full write-up.</p>
 </div>
-
-<div class="proj-group">Personal research</div>
-<section class="figures">
-  <article class="figure wide reveal">
-    <a class="cardlink" href="projects/hibiki.html" aria-label="Hibiki LT-EN, full write-up"></a>
-    <div class="stamp now"><span class="pulse"></span> now building</div>
-    <h3>Hibiki LT &harr; EN: <em>real-time speech translation.</em></h3>
-    <p>
-      Adapting Kyutai's Hibiki simultaneous translation model to an entirely new
-      language pair: Lithuanian and English. Full pipeline, built from scratch.
-      44,000 curated parallel pairs, synthetic bilingual stereo speech, a custom
-      fine-tuning fork, and on-device inference with MLX on Apple Silicon.
-      Speech in, translated speech out, no cloud.
-    </p>
-    <div class="figviz">
-      <svg class="wavefig" viewBox="0 0 600 60" width="100%" height="60" aria-hidden="true" id="wavefig"></svg>
-    </div>
-    <div class="caption">fig 1. live waveform, lithuanian phonemes pictured mid-flight. ~12.5 tok/s on an M4.</div>
-    <span class="readmore">read the full write-up</span>
-  </article>
-</section>
 
 <div class="proj-group">Work &middot; KPMG</div>
 <section class="figures">
   <article class="figure wide reveal">
-    <a class="cardlink" href="projects/ai-solutions.html" aria-label="AI solutions at KPMG, full write-up"></a>
-    <div class="stamp now"><span class="pulse"></span> now building</div>
-    <h3>AI solutions on the <em>Microsoft stack.</em></h3>
+    <div class="stamp now"><span class="pulse"></span> in progress</div>
+    <h3>AI agents for <em>quote-to-cash.</em></h3>
     <p>
-      The current chapter: demoing, researching and building AI solutions with
-      Microsoft AI Foundry, Copilot Studio and Agent 365, and consulting clients
-      on which of them actually fits their business problem. The hard part is
-      rarely the model. It is the match between tool and problem.
+      For a global specialty-ingredients distributor: advising on the target AI
+      architecture and building agents that automate quote-to-cash, with Microsoft
+      Foundry, Copilot Studio, intelligent document processing, Azure Functions
+      and Logic Apps.
     </p>
-    <span class="readmore">read the full write-up</span>
+    <div class="caption">client work, details confidential.</div>
+  </article>
+
+  <article class="figure reveal">
+    <div class="stamp">built &middot; 2026</div>
+    <h3>Process Intelligence <em>Engine.</em></h3>
+    <p>
+      Led the development of a KPMG multi-agent platform that runs any business
+      process on custom, knowledge-grounded agents. Demoed to 5 clients and now
+      shown to clients by 3+ teams across Europe.
+    </p>
   </article>
 
   <article class="figure reveal">
     <a class="cardlink" href="projects/fabric-platform.html" aria-label="Fabric data platform, full write-up"></a>
-    <div class="stamp">built &middot; 2025</div>
+    <div class="stamp">since 2024</div>
     <h3>A data platform for <em>oil &amp; gas.</em></h3>
     <p>
-      Co-built and managed a Microsoft Fabric data platform for a large oil &amp;
-      gas client: lakehouse, medallion architecture, metadata-driven pipelines,
-      change data capture. Personal contribution: re-architecting pipeline runs
-      from sequential to parallel, cutting processing time more than 5x.
+      Primary technical point of contact for the Microsoft Fabric platform behind a
+      large oil &amp; gas client's financial reporting. Moved the pipelines from
+      sequential to parallel (more than 5x faster) and cut capacity usage 4x,
+      from 80% to 20%.
     </p>
     <span class="readmore">read the full write-up</span>
   </article>
@@ -966,23 +915,24 @@ a.cert { display: block; text-decoration: none; color: inherit; }
     <h3>Real-time <em>route optimisation.</em></h3>
     <p>
       A real-time vehicle routing platform on Fabric Real-Time Intelligence,
-      built with colleagues: Eventhouse, Kafka, Azure Event Hubs, Eventstream,
-      KQL and live dashboards. The team was selected to present it at Microsoft
-      FabCon 2026 in Atlanta.
+      co-built with colleagues: Kafka, Event Hubs, Eventstream, Eventhouse and KQL.
+      I mentored the two consultants who presented it at FabCon 2026 in Atlanta.
     </p>
     <span class="readmore">read the full write-up</span>
   </article>
+</section>
 
-  <article class="figure reveal">
-    <a class="cardlink" href="projects/hr-dashboards.html" aria-label="HR analytics dashboards, full write-up"></a>
-    <div class="stamp">built &middot; 2024</div>
-    <h3>HR analytics at <em>500+ users.</em></h3>
+<div class="proj-group">Talks</div>
+<section class="figures">
+  <article class="figure wide reveal">
+    <div class="stamp">spoke &middot; oct 2026</div>
+    <h3>From Notebook to Bedside, at <em>FabCon Europe.</em></h3>
     <p>
-      Built and managed Power BI dashboards for HR analytics, each serving more
-      than 500 users. Then made them survive without me: consulting and teaching
-      citizen developers to maintain them.
+      Co-presented a clinical risk prediction pipeline built in Microsoft Fabric,
+      from notebook to something a hospital could use, to 50+ attendees at FabCon
+      Europe 2026 in Barcelona.
     </p>
-    <span class="readmore">read the full write-up</span>
+    <div class="caption">Barcelona, 1 October 2026. Co-presented with a KPMG colleague.</div>
   </article>
 </section>
 
@@ -1019,13 +969,12 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 
   <article class="figure reveal">
     <a class="cardlink" href="projects/nhs-knees.html" aria-label="NHS knee outcomes project, full write-up"></a>
-    <div class="stamp">built &middot; 2025</div>
-    <h3>The NHS <em>knee models.</em></h3>
+    <div class="stamp">built &middot; 2026</div>
+    <h3>Predicting knee replacement <em>outcomes.</em></h3>
     <p>
-      EAISI group project on NHS Digital PROMs data: predicting which knee
-      replacement patients will have poor outcomes, before surgery. Imbalanced
-      classes, precision-recall trade-offs, and decision thresholds a clinician
-      could actually use.
+      EAISI capstone on NHS patient-reported outcome data: predicting, before
+      surgery, which patients will have a poor outcome. An interpretable model
+      (EBM, SHAP, SMOTE), awarded Best Project in the cohort.
     </p>
     <div class="figviz">
       <svg class="knee-svg" viewBox="0 0 220 150" width="100%" height="150" aria-hidden="true">
@@ -1040,7 +989,7 @@ a.cert { display: block; text-decoration: none; color: inherit; }
         <text x="138" y="100">&theta;</text>
       </svg>
     </div>
-    <div class="caption">fig 3. interactive. hover to flex. predicted range of motion: excellent.</div>
+    <div class="caption">fig 3. hover to bend the knee.</div>
     <span class="readmore">read the full write-up</span>
   </article>
 
@@ -1076,8 +1025,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 <section class="certs" aria-label="Certifications">
   <details class="certs-details">
     <summary>
-      <h2>The credentials, <em>verified.</em></h2>
-      <p class="note">Seven Microsoft certifications across data, AI and the Power Platform. Each one links to its verified badge.</p>
+      <h2>Microsoft <em>certifications.</em></h2>
+      <p class="note">Seven certifications across data, AI and the Power Platform, each linked to its verified badge.</p>
       <span class="cert-cue"></span>
     </summary>
     <div class="cert-grid">
@@ -1106,9 +1055,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 </section>
 
 <footer class="colophon">
-  <div>&copy; <span id="yr"></span> Audrius Šaras &middot; typeset in Newsreader &amp; Azeret Mono &middot; no cookies, only priors</div>
-  <div class="inf" id="eggHint" title="a hint, if you want one">5 figures are hidden on this page</div>
-  <div class="inf" id="figInf" title="one more figure">fig. &infin;</div>
+  <div>&copy; <span id="yr"></span> Audrius Šaras &middot; typeset in Newsreader &amp; Azeret Mono</div>
+  <div>Rotterdam, NL</div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1151,7 +1099,7 @@ function openBranch(name, scroll = true) {
   const open = branch.hidden;
   branch.hidden = !open;
   btn.setAttribute("aria-expanded", String(open));
-  btn.querySelector(".fork-cue").textContent = open ? "close this branch" : "open this branch";
+  btn.querySelector(".fork-cue").textContent = open ? "hide" : "view";
   if (open && scroll) branch.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 function ensureBranch(name) {
@@ -1198,105 +1146,166 @@ document.querySelectorAll(".pt-hit").forEach(c => {
   c.addEventListener("click", () => openCase(+c.dataset.i));
 });
 
-/* ---------- chart: two series (work solid blue, education dashed red) ---------- */
-const basePts = [[80,300],[175,330],[250,210],[325,250],[415,190],[525,60]];
-const eduIdx = [0, 2, 5], workIdx = [1, 3, 4];
-const isEdu = i => eduIdx.includes(i);
-const seriesColor = i => isEdu(i) ? "#d3401f" : "#1f4ac2";
+/* ---------- chart: six career steps, an OLS trend and a forecast for step 7 ----------
+   x = career step (ordinal), y = my own estimate of technical depth (0 to 12). */
+const STEPS = [
+  { label: "UVA",      logo: "bsc",       year: "2020", v: 3.0, edu: true },
+  { label: "MSFT",     logo: "microsoft", year: "2023", v: 2.0 },
+  { label: "RSM",      logo: "rsm",       year: "2023", v: 5.0, edu: true },
+  { label: "UNILEVER", logo: "unilever",  year: "2024", v: 5.5 },
+  { label: "KPMG",     logo: "kpmg",      year: "2024", v: 8.0 },
+  { label: "EAISI",    logo: "eaisi",     year: "2025", v: 8.5, edu: true },
+];
+const NEXT_STEPS = [            // candidate classes for step 7 and their (made-up) probabilities
+  ["Manager, AI & Data", 0.24],
+  ["Lead AI Engineer", 0.22],
+  ["AI Architect", 0.18],
+  ["Speaker at FabCon 2027", 0.14],
+  ["Guest lecturer at EAISI", 0.09],
+  ["Finally fluent in Dutch", 0.07],
+  ["Opens a restaurant", 0.04],
+  ["Professional basketball player", 0.02],
+];
+const SVGNS = "http://www.w3.org/2000/svg";
+const X = i => 80 + i * 64;                 // step index 0..6 -> px (step 7 = index 6)
+const Y = v => 370 - v * 27;                // technical depth -> px
+const RED = "#d3401f", BLUE = "#1f4ac2", PAPER = "#f7f3ea", INK = "#211e19";
+const eduIdx = STEPS.map((s, i) => s.edu ? i : -1).filter(i => i >= 0);
+const workIdx = STEPS.map((s, i) => s.edu ? -1 : i).filter(i => i >= 0);
+const colorOf = i => STEPS[i].edu ? RED : BLUE;
 
-const eduPath = document.getElementById("eduPath");
-const workPath = document.getElementById("workPath");
-const extPath = document.getElementById("extPath");
-const nowGroup = document.getElementById("nowGroup");
-const nowCore = document.getElementById("nowCore");
-const nowRing = document.getElementById("nowRing");
-const nowText = document.getElementById("nowText");
-const eduClipRect = document.getElementById("eduClipRect");
-const workClipRect = document.getElementById("workClipRect");
-const ptCircles = [...document.querySelectorAll("#pts circle")];
-const ptLabels = [...document.querySelectorAll("#ptLabels text")];
-const logoLayer = document.getElementById("ptLogos");
+/* least squares on (1..6, v) */
+const xs = STEPS.map((_, i) => i + 1), ys = STEPS.map(s => s.v), n = xs.length;
+const mx = xs.reduce((a, b) => a + b) / n, my = ys.reduce((a, b) => a + b) / n;
+const sxx = xs.reduce((a, x) => a + (x - mx) ** 2, 0);
+const slope = xs.reduce((a, x, k) => a + (x - mx) * (ys[k] - my), 0) / sxx;
+const icpt = my - slope * mx;
+const fit = x => icpt + slope * x;
+const ssRes = ys.reduce((a, y, k) => a + (y - fit(xs[k])) ** 2, 0);
+const ssTot = ys.reduce((a, y) => a + (y - my) ** 2, 0);
+const R2 = 1 - ssRes / ssTot;
+const se = Math.sqrt(ssRes / (n - 2));
+const T80 = 1.533;                          // t(0.90, df = 4)
+const piHalf = x => T80 * se * Math.sqrt(1 + 1 / n + (x - mx) ** 2 / sxx);
+const r2label = document.getElementById("r2label");
+const showR2 = () => { r2label.textContent = `R² = ${R2.toFixed(2)}`; };
+showR2();
+
+/* static chart pieces */
+const pts = document.getElementById("pts"), ptLabels = document.getElementById("ptLabels"), logoLayer = document.getElementById("ptLogos");
 const LOGO_W = 52, LOGO_H = 24;
+const labelY = i => STEPS[i].edu ? Y(STEPS[i].v) - 18 : Y(STEPS[i].v) + 26;
+const logoY = i => STEPS[i].edu ? Y(STEPS[i].v) - LOGO_H - 14 : Y(STEPS[i].v) + 14;
+const el = (tag, attrs, parent) => { const e = document.createElementNS(SVGNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+const ptCircles = STEPS.map((s, i) => el("circle", { class: "pt-hit", "data-i": i, cx: X(i), cy: Y(s.v), r: 7, fill: PAPER, stroke: colorOf(i), "stroke-width": 3 }, pts));
+const ptTexts = STEPS.map((s, i) => { const t = el("text", { x: X(i), y: labelY(i), "text-anchor": "middle" }, ptLabels); t.textContent = s.label; return t; });
+const ticks = document.getElementById("xTicks");
+STEPS.concat([{ year: "next" }]).forEach((s, i) => { const t = el("text", { x: X(i), y: 386, "text-anchor": "middle" }, ticks); t.textContent = s.year; });
 
-const labelY = (pt, i) => isEdu(i) ? pt[1] - 18 : pt[1] + 26;
-const logoY  = (pt, i) => isEdu(i) ? pt[1] - LOGO_H - 14 : pt[1] + 14;
-const pathD = (idxs, pts) => "M " + idxs.map(i => pts[i].join(" ")).join(" L ");
+const eduPath = document.getElementById("eduPath"), workPath = document.getElementById("workPath");
+const linePath = idxs => "M " + idxs.map(i => `${X(i)} ${Y(STEPS[i].v)}`).join(" L ");
+eduPath.setAttribute("d", linePath(eduIdx));
+workPath.setAttribute("d", linePath(workIdx));
 
-function layout(pts) {
-  eduPath.setAttribute("d", pathD(eduIdx, pts));
-  workPath.setAttribute("d", pathD(workIdx, pts));
-  const [kx, ky] = pts[4];
-  const ex = 572, ey = Math.max(30, ky - 50);
-  extPath.setAttribute("d", `M ${kx} ${ky} L ${ex} ${ey}`);
-  nowCore.setAttribute("cx", ex); nowCore.setAttribute("cy", ey);
-  nowRing.setAttribute("cx", ex); nowRing.setAttribute("cy", ey);
-  nowText.setAttribute("x", ex - 10); nowText.setAttribute("y", ey - 14);
-  pts.forEach((p, i) => {
-    ptCircles[i].setAttribute("cx", p[0]); ptCircles[i].setAttribute("cy", p[1]);
-    ptLabels[i].setAttribute("x", p[0]);   ptLabels[i].setAttribute("y", labelY(p, i));
-    const img = logoLayer.querySelector(`[data-i="${i}"]`);
-    if (img) { img.setAttribute("x", p[0] - LOGO_W / 2); img.setAttribute("y", logoY(p, i)); }
-  });
+const trendPath = document.getElementById("trendPath"), piBand = document.getElementById("piBand");
+const clampY = v => Math.max(-1, Math.min(13, v));
+function drawModel(f, half) {
+  let d = "";
+  for (let x = 1; x <= 7.001; x += 0.1) d += (d ? " L " : "M ") + `${X(x - 1).toFixed(1)} ${Y(clampY(f(x))).toFixed(1)}`;
+  trendPath.setAttribute("d", d);
+  const up = [], lo = [];
+  for (let x = 6; x <= 7.001; x += 0.1) { up.push(`${X(x - 1).toFixed(1)} ${Y(clampY(f(x) + half(x))).toFixed(1)}`); lo.unshift(`${X(x - 1).toFixed(1)} ${Y(clampY(f(x) - half(x))).toFixed(1)}`); }
+  piBand.setAttribute("d", "M " + up.concat(lo).join(" L ") + " Z");
 }
+let model = { f: fit, half: piHalf };
+drawModel(model.f, model.half);
 
+/* dialog hooks for points */
+ptCircles.forEach(c => c.addEventListener("click", () => openCase(+c.dataset.i)));
+
+/* scrollytelling reveal */
+const eduClipRect = document.getElementById("eduClipRect"), workClipRect = document.getElementById("workClipRect");
+const forecastZone = document.getElementById("forecastZone");
 let activeIdx = -1;
-function setActive(i) {
-  if (i === activeIdx) return;
-  activeIdx = i;
-  applyReveal();
-}
+function setActive(i) { if (i !== activeIdx) { activeIdx = i; applyReveal(); } }
 function applyReveal() {
   const i = activeIdx;
-  const reach = idxs => {
-    const seen = idxs.filter(j => j <= i);
-    return seen.length ? basePts[seen[seen.length - 1]][0] + 14 : 0;
-  };
+  const reach = idxs => { const seen = idxs.filter(j => j <= i); return seen.length ? X(seen[seen.length - 1]) + 14 : 0; };
   eduClipRect.style.width = reach(eduIdx) + "px";
   workClipRect.style.width = reach(workIdx) + "px";
-  nowGroup.style.opacity = i >= 4 ? "1" : "0";
-  ptCircles.forEach((c, j) => {
-    c.setAttribute("fill", j <= i ? seriesColor(j) : "#f7f3ea");
-    c.setAttribute("stroke", seriesColor(j));
-    c.setAttribute("r", j === i ? 10 : 7);
-  });
-  ptLabels.forEach((t, j) => {
-    t.setAttribute("font-weight", j === i ? "600" : "400");
-    t.setAttribute("fill", j === i ? seriesColor(j) : "#211e19");
-  });
-  document.querySelectorAll(".step").forEach(s =>
-    s.classList.toggle("active", +s.dataset.i === i));
+  forecastZone.style.opacity = i >= STEPS.length - 1 ? "1" : "0";
+  ptCircles.forEach((c, j) => { c.setAttribute("fill", j <= i ? colorOf(j) : PAPER); c.setAttribute("r", j === i ? 10 : 7); });
+  ptTexts.forEach((t, j) => { t.setAttribute("font-weight", j === i ? "600" : "400"); t.setAttribute("fill", j === i ? colorOf(j) : INK); });
+  document.querySelectorAll(".step").forEach(s => s.classList.toggle("active", +s.dataset.i === i));
 }
-
 const stepIO = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) setActive(+e.target.dataset.i); });
 }, { rootMargin: "-40% 0px -40% 0px" });
 document.querySelectorAll(".step").forEach(s => stepIO.observe(s));
 
-/* ---------- logos: drop PNG/SVG files into assets/logos/ and they replace the text labels ----------
-   expected files: bsc.png, microsoft.png, rsm.png, unilever.png, kpmg.png, eaisi.png (svg also works) */
-const logoFiles = ["bsc", "microsoft", "rsm", "unilever", "kpmg", "eaisi"];
-logoFiles.forEach((name, i) => {
+/* logos replace the text labels when assets/logos/<name>.png|svg exists */
+STEPS.forEach((s, i) => {
   const tryExt = exts => {
     if (!exts.length) return;
-    const src = `assets/logos/${name}.${exts[0]}`;
-    const probe = new Image();
+    const src = `assets/logos/${s.logo}.${exts[0]}`, probe = new Image();
     probe.onload = () => {
-      const p = basePts[i];
-      const img = document.createElementNS("http://www.w3.org/2000/svg", "image");
-      img.setAttribute("href", src);
-      img.setAttribute("data-i", i);
-      img.setAttribute("x", p[0] - LOGO_W / 2);
-      img.setAttribute("y", logoY(p, i));
-      img.setAttribute("width", LOGO_W);
-      img.setAttribute("height", LOGO_H);
-      img.setAttribute("preserveAspectRatio", "xMidYMid meet");
-      logoLayer.appendChild(img);
-      ptLabels[i].style.display = "none";
+      el("image", { href: src, x: X(i) - LOGO_W / 2, y: logoY(i), width: LOGO_W, height: LOGO_H, preserveAspectRatio: "xMidYMid meet" }, logoLayer);
+      ptTexts[i].style.display = "none";
     };
     probe.onerror = () => tryExt(exts.slice(1));
     probe.src = src;
   };
   tryExt(["svg", "png"]);
+});
+
+/* ---------- predict: sample step 7 ---------- */
+const predGroup = document.getElementById("predGroup"), predPt = document.getElementById("predPt"), predRing = document.getElementById("predRing");
+const predQ = document.getElementById("predQ"), predStem = document.getElementById("predStem");
+const predOut = document.getElementById("predOut"), predProbs = document.getElementById("predProbs"), predictBtn = document.getElementById("predictBtn");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let runs = 0, busy = false;
+const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+const sampleClass = () => { let r = Math.random(); for (const [name, p] of NEXT_STEPS) { if ((r -= p) <= 0) return [name, p]; } return NEXT_STEPS[0]; };
+function placePred(v) {
+  const x = X(6), y = Y(clampY(v));
+  predPt.setAttribute("cx", x); predPt.setAttribute("cy", y);
+  predRing.setAttribute("cx", x); predRing.setAttribute("cy", y);
+  predQ.setAttribute("x", x); predQ.setAttribute("y", y - 14);
+  predStem.setAttribute("x1", X(5)); predStem.setAttribute("y1", Y(STEPS[5].v)); predStem.setAttribute("x2", x); predStem.setAttribute("y2", y);
+}
+function renderProbs(pick) {
+  predProbs.hidden = false;
+  predProbs.innerHTML = NEXT_STEPS.map(([name, p]) =>
+    `<div class="prob${name === pick ? " pick" : ""}"><span class="pn">${name}</span><span class="pb"><i style="width:${Math.round(p / NEXT_STEPS[0][1] * 100)}%"></i></span><span class="pp">${p.toFixed(2)}</span></div>`).join("");
+}
+predictBtn.addEventListener("click", () => {
+  if (busy) return;
+  if (activeIdx < STEPS.length - 1) setActive(STEPS.length - 1);
+  busy = true; runs++;
+  predGroup.style.opacity = "1";
+  predictBtn.textContent = "sampling...";
+  const mean = model.f(7), sd = model.half(7) / T80;
+  const finalV = mean + gauss() * sd;
+  const [name, p] = sampleClass();
+  const frames = reduceMotion ? 0 : 14;
+  let k = 0;
+  const step = () => {
+    if (k < frames) {
+      placePred(mean + gauss() * sd);
+      predOut.innerHTML = `<span class="mono">${NEXT_STEPS[Math.floor(Math.random() * NEXT_STEPS.length)][0]}</span>`;
+      k++; setTimeout(step, 55);
+      return;
+    }
+    placePred(finalV);
+    predQ.textContent = "7";
+    predOut.innerHTML = `<span class="pl">Step 7:</span> <strong>${name}</strong> <span class="mono">p = ${p.toFixed(2)} &middot; run ${runs}</span>`;
+    renderProbs(name);
+    predictBtn.textContent = "Predict again";
+    busy = false;
+    if (name === "Professional basketball player") showToast("outlier detected. the model is 98% sure this won't happen. a man can dream.", 3600);
+    if (name === "Opens a restaurant") showToast("one new recipe a week, compounding.", 3000);
+  };
+  step();
 });
 
 /* ---------- reveal ---------- */
@@ -1305,96 +1314,31 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.15 });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-/* ---------- waveform fig ---------- */
-const wf = document.getElementById("wavefig");
-for (let i = 0; i < 80; i++) {
-  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  const h = 8 + Math.random() * 44;
-  r.setAttribute("x", i * 7.5);
-  r.setAttribute("y", 60 - h);
-  r.setAttribute("width", 4);
-  r.setAttribute("height", h);
-  r.setAttribute("fill", i % 9 === 0 ? "#d3401f" : "#1f4ac2");
-  r.style.animationDelay = (i * 0.045) + "s";
-  r.style.animationDuration = (1 + Math.random()) + "s";
-  wf.appendChild(r);
-}
-
-/* ============ EASTER EGG 1: y-axis click, log scale ============ */
-let logScale = false;
-function setLogScale(on) {
-  logScale = on;
-  const newPts = basePts.map(([x, y]) => {
-    if (!logScale) return [x, y];
-    const q = 370 - y;
-    const lq = Math.log(q + 1) / Math.log(351) * 340;
-    return [x, 370 - lq];
-  });
-  layout(newPts);
-  document.getElementById("yAxisLabel").firstChild.textContent = logScale ? "log(decision quality)" : "decision quality";
-}
-document.getElementById("yAxisLabel").addEventListener("click", () => {
-  setLogScale(!logScale);
-  showToast(logScale
-    ? "log scale enabled. still up and to the right, that's the point."
-    : "linear scale restored. honesty resumed.");
-});
-
-/* ============ EASTER EGG 2: type "overfit" ============ */
+/* ============ EASTER EGG: type "overfit" (then "dropout"); "labas" ============ */
+const lagrange = x => xs.reduce((sum, xk, k) => sum + ys[k] * xs.reduce((prod, xj, j) => j === k ? prod : prod * (x - xj) / (xk - xj), 1), 0);
 let typed = "";
 window.addEventListener("keydown", e => {
   if (document.activeElement && document.activeElement.tagName === "INPUT") return;
   if (e.key.length === 1) typed = (typed + e.key.toLowerCase()).slice(-12);
   if (typed.endsWith("overfit")) {
     typed = "";
-    const noise = start => {
-      let d = `M ${start} ${80 + Math.random() * 260}`;
-      for (let x = start + 10; x <= 560; x += 12) d += ` L ${x} ${80 + Math.random() * 260}`;
-      return d;
-    };
-    eduPath.setAttribute("d", noise(80));
-    workPath.setAttribute("d", noise(175));
-    eduClipRect.style.width = "600px";
-    workClipRect.style.width = "600px";
-    document.getElementById("r2label").textContent = "R² = 1.00 ⚠";
-    showToast("OVERFIT: perfect fit on training data, zero generalization. type 'dropout' to regularize.");
+    model = { f: lagrange, half: () => 0.05 };
+    drawModel(model.f, model.half);
+    if (activeIdx < STEPS.length - 1) setActive(STEPS.length - 1);
+    r2label.textContent = "R² = 1.00 ⚠";
+    showToast(`OVERFIT: a degree-5 polynomial through six points. R² = 1.00, and step 7 is now ${lagrange(7).toFixed(0)}. type 'dropout' to regularise.`, 5200);
   }
   if (typed.endsWith("dropout")) {
     typed = "";
-    setLogScale(false);
-    applyReveal();
-    document.getElementById("r2label").textContent = "R² = 0.94";
-    showToast("dropout applied. model regularized. carry on.");
+    model = { f: fit, half: piHalf };
+    drawModel(model.f, model.half);
+    showR2();
+    showToast("dropout applied. back to a straight line and honest uncertainty.");
   }
   if (typed.endsWith("labas")) {
     typed = "";
     showToast("Labas! 🇱🇹 the lithuanian handshake survives every redesign.");
   }
-});
-
-/* ============ EASTER EGG 3: the outlier ============ */
-document.getElementById("outlier").addEventListener("click", () => {
-  showToast("outlier detected: 2020. excluded from analysis. we don't talk about 2020.");
-});
-document.getElementById("outlier").addEventListener("mouseenter", () => {
-  showToast("...what's this faint data point? click it.", 1800);
-});
-
-/* ============ EASTER EGG 4: fig. infinity ============ */
-let infClicks = 0;
-document.getElementById("figInf").addEventListener("click", () => {
-  infClicks++;
-  const msgs = [
-    "fig. ∞: the figure that proves every chart hides another chart.",
-    "fig. ∞ + 1: careful, this axis is unbounded.",
-    "fig. ∞ + 2: okay, you win. email me and I'll show you the real backlog."
-  ];
-  showToast(msgs[Math.min(infClicks - 1, msgs.length - 1)], 3400);
-});
-
-/* ============ hint trail ============ */
-document.getElementById("eggHint").addEventListener("click", () => {
-  showToast("look for red ink: the chart's y-axis, the small print under it, and the P.S. by the email.", 4600);
 });
 
 /* ============ EASTER EGG 5: console ============ */
@@ -1405,12 +1349,10 @@ console.log(`%c
   evidence:   you opened the console.
   p < 0.001.  hypothesis confirmed.
 
-  five hidden figures on this page:
-   1. the y-axis label of the career chart takes clicks personally
-   2. type 'overfit' anywhere on the page. regret it. type 'dropout'
-   3. one faint data point in the chart does not belong. click it
-   4. the infinity figure in the footer rewards persistence
-   5. greet me in my mother tongue (5 letters, starts with L)
+  things to try on this page:
+   1. open the career chart and press "predict next step"
+   2. type 'overfit' anywhere. regret it. type 'dropout'
+   3. greet me in my mother tongue (5 letters, starts with L)
 
   contact: sarasaudrius@gmail.com
 `, "color:#1f4ac2; font-family:monospace; font-size:12px;");

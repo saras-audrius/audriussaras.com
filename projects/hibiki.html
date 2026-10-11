@@ -84,9 +84,10 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
   <nav><a href="../index.html#projects">back to projects</a></nav>
 </header>
 <main>
-  <div class="meta"><span>2025 to now · personal research</span> <span class="stamp now"><span class="pulse"></span> now building</span></div>
+  <div class="meta"><span>Personal research</span> <span class="stamp">paused</span></div>
   <h1>Hibiki LT &harr; EN: <em>real-time speech translation.</em></h1>
   <p class="dek">Teaching a simultaneous speech translation model a language pair it has never heard: Lithuanian and English. On a laptop.</p>
+  <p><em>Status: paused. The dataset pipeline and training fork are built; full fine-tuning is still to come.</em></p>
   <h2>What it is</h2>
   <p>Kyutai's Hibiki translates speech to speech in real time, but only for the language pairs it was trained on. Lithuanian is not one of them. This project adapts Hibiki to LT&nbsp;&harr;&nbsp;EN end to end: dataset construction, synthetic speech generation, a custom fine-tuning fork, and fully on-device inference.</p>
   <p>Everything runs locally on Apple Silicon through MLX. No cloud, no API, no audio leaving the machine. Current throughput is around 12.5 tokens per second on an M4, real-time factor 1.41x in batch mode.</p>

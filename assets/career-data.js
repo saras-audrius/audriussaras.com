@@ -2,12 +2,12 @@
 window.caseFiles = [
   {
     "period": "2020 to 2023 · University of Amsterdam",
-    "title": "BSc Communication Science, minor Data Science & AI",
-    "role": "Cum Laude at the University of Amsterdam. Where communication met computation.",
+    "title": "BSc Communication Science (Hons), minor Data Science & AI",
+    "role": "Graduated Cum Laude (8.42/10).",
     "work": [
-      "Full bachelor's in Communication Science, graduated Cum Laude",
-      "Minor in Data Science & AI: first ML models, statistics and Python",
-      "Learned to design research: hypotheses, methods, evidence"
+      "Honours bachelor's in Communication Science, graduated Cum Laude",
+      "Minor in Data Science & AI: my first machine learning models, statistics and Python",
+      "Learned to design research properly: hypotheses, methods, evidence"
     ],
     "tags": [
       "Statistics",
@@ -15,96 +15,93 @@ window.caseFiles = [
       "Python",
       "First ML"
     ],
-    "lesson": "Communicating an insight is half the job. The other half is having one worth communicating."
+    "lesson": "Understanding your audience matters as much as the analysis. I still use that every day with clients."
   },
   {
     "period": "Feb to Aug 2023 · Microsoft",
-    "title": "Partner Development Manager, SMC",
-    "role": "Leading the Azure Migration & Modernization Programme.",
+    "title": "Partner Development Manager Intern",
+    "role": "SMC partner business, Microsoft Netherlands.",
     "work": [
-      "Led AMMP adoption for the Small, Medium & Corporate partner business",
-      "Guided partners through moving client estates to Azure",
-      "Built migration business cases where technology met commercial reality"
+      "Led adoption of the Azure Migration and Modernization Program (AMMP) across the Dutch partner ecosystem, growing usage 5x in 4 months",
+      "Identified market opportunities for partners and onboarded them into the incentive programme",
+      "Built a Power BI report on the programme's core KPIs and wrote a biweekly data-driven newsletter for the team"
     ],
     "tags": [
       "Azure",
-      "Cloud migration",
       "Partner ecosystem",
-      "Business cases"
+      "Adoption",
+      "Power BI"
     ],
-    "lesson": "Technology lands only when the business case does. Scale is a feature and a constraint."
+    "lesson": "Technology only lands when people see what is in it for them. Adoption has to be designed, not hoped for."
   },
   {
     "period": "Sep 2023 to Jul 2024 · RSM",
     "title": "MSc Business Analytics & Management",
-    "role": "Cum Laude at Rotterdam School of Management.",
+    "role": "Rotterdam School of Management, graduated Cum Laude (8.43/10).",
     "work": [
-      "Machine learning, optimisation and econometrics with a management lens",
-      "Learned to translate between the model and the boardroom",
-      "Graduated Cum Laude while working in analytics on the side"
+      "Machine learning, optimisation, causal inference and data management, with a business lens",
+      "Applied projects: hub-and-spoke route optimisation for a logistics client, and ESG-aware supplier selection",
+      "Master thesis at Unilever on forecasting SKU sales with machine learning"
     ],
     "tags": [
       "Machine learning",
       "Optimisation",
-      "Econometrics",
-      "Strategy"
+      "Causal inference",
+      "SQL"
     ],
-    "lesson": "Analytics is a management discipline. The hard part is deciding which numbers deserve attention."
+    "lesson": "A good model answers a question someone actually has. Starting from the decision, not the data, saves a lot of time."
   },
   {
     "period": "Feb to Jul 2024 · Unilever",
-    "title": "Data Analytics, Customer Development",
-    "role": "Customer Development Analytics team.",
+    "title": "Data Analyst Intern, Customer Development Analytics",
+    "role": "Analytics for category marketing teams.",
     "work": [
-      "Analytics for retail and customer development across major brands",
-      "Turned sales and customer data into decisions account teams could act on",
-      "Worked where forecasts meet physical shelves"
+      "Structured and analysed shopper data in Python to give category marketing teams retailer-level performance insights",
+      "Wrote my master thesis here: Random Forest and Gradient Boosting against Prophet for SKU sales-share forecasting, with SHAP for interpretability"
     ],
     "tags": [
-      "Retail analytics",
+      "Python",
       "Forecasting",
-      "Dashboards",
-      "Stakeholders"
+      "SHAP",
+      "Retail analytics"
     ],
-    "lesson": "A model nobody acts on is a hobby. Adoption is a design requirement, not an afterthought."
+    "lesson": "Accuracy is not enough. Planners trusted the forecasts once they could see why the model said what it said."
   },
   {
     "period": "Jul 2024 to now · KPMG",
-    "title": "Data & AI Engineer, Microsoft team",
-    "role": "End-to-end data and AI solutions for clients.",
+    "title": "Senior Tech Consultant (AI & Data)",
+    "role": "Core Build team within KPMG's AI & Data team. Promoted to Senior in October 2026.",
     "work": [
-      "Built and managed Power BI dashboards for HR analytics, each serving 500+ users, and taught citizen developers to maintain them",
-      "Co-built a Microsoft Fabric data platform for a large oil & gas client: lakehouse, medallion architecture, metadata-driven pipelines, change data capture",
-      "Re-architected pipeline orchestration from sequential to parallel, cutting processing time more than 5x",
-      "Co-built a real-time VRP optimisation platform on Fabric Real-Time Intelligence, presented by the team at Microsoft FabCon 2026",
-      "Now demoing, researching and building AI solutions with Microsoft AI Foundry, Copilot Studio and Agent 365",
-      "Absorbed the good practices along the way: git discipline, CI/CD, Agile delivery"
+      "Advising a global specialty-ingredients distributor on its target AI architecture, and building agents to automate quote-to-cash",
+      "Led development of the Process Intelligence Engine, a multi-agent platform now shown to clients by 3+ teams across Europe",
+      "Spoke at FabCon Europe 2026 in Barcelona: From Notebook to Bedside, a clinical risk prediction pipeline in Microsoft Fabric",
+      "Primary technical point of contact for a large oil & gas client's Fabric data platform: pipeline runs more than 5x faster, capacity usage down 4x (80% to 20%)",
+      "Co-built a real-time route optimisation platform and mentored the two consultants who presented it at FabCon 2026 in Atlanta"
     ],
     "tags": [
+      "AI agents",
+      "Microsoft Foundry",
       "Microsoft Fabric",
       "PySpark",
-      "Power BI",
-      "GenAI agents",
-      "CI/CD",
-      "Agile"
+      "Real-time data",
+      "CI/CD"
     ],
-    "lesson": "Strong decisions need strong foundations. Most AI problems are data problems wearing a costume."
+    "lesson": "Most AI projects succeed or fail on the data underneath and on whether people actually use them. I try to build for both."
   },
   {
     "period": "May 2025 to Apr 2026 · EAISI",
-    "title": "Post-master Data Science & AI, TU/e",
-    "role": "Professional degree at the Eindhoven AI Systems Institute. Certified data scientist title.",
+    "title": "Mastering Data & AI, post-master",
+    "role": "Eindhoven AI Systems Institute (TU/e), completed alongside my job. Certified data scientist title.",
     "work": [
-      "Deepened ML engineering, MLOps and AI systems thinking",
-      "Applied rigour to real industry cases alongside the day job",
-      "Built AI meant to survive contact with the real world"
+      "Courses in deep learning, NLP, generative AI, time-series forecasting, and taking models from PoC to production",
+      "Capstone: an interpretable model predicting poor outcomes after knee replacement on NHS data, awarded Best Project in the cohort"
     ],
     "tags": [
-      "ML engineering",
-      "MLOps",
-      "AI systems",
-      "Responsible AI"
+      "Deep learning",
+      "NLP",
+      "Generative AI",
+      "MLOps"
     ],
-    "lesson": "Rigour compounds. Every shortcut you skip early is interest you collect later."
+    "lesson": "Doing it next to a full-time job taught me as much about focus as about AI. Learning never really stops."
   }
 ];

@@ -84,19 +84,19 @@ ul li::before { content: "\2514"; position: absolute; left: 0; color: var(--blue
   <nav><a href="../index.html#projects">back to projects</a></nav>
 </header>
 <main>
-  <div class="meta"><span>2024 to 2025 · KPMG client work</span> <span class="stamp">built · 2025</span></div>
+  <div class="meta"><span>Since 2024 · KPMG client work</span> <span class="stamp">since 2024</span></div>
   <h1>A data platform for <em>oil &amp; gas.</em></h1>
   <p class="dek">A large oil &amp; gas client, a team of developers, and one lakehouse to bring the data together.</p>
   <h2>What it is</h2>
   <p>Together with a team of developers, I built and managed a data platform for a large oil &amp; gas client on Microsoft Fabric. The architecture followed the medallion pattern (bronze, silver, gold) on a lakehouse foundation, fed by metadata-driven data pipelines with change data capture and Dataflow Gen2, and transformed with PySpark and Spark SQL.</p>
-  <p>My personal contribution: re-architecting how the pipelines run. The platform originally processed sequentially; I introduced a parallel execution pattern that cut processing time by more than 5x. I also slimmed down overbloated tables, reducing row counts for faster, cheaper ingestion.</p>
+  <p>My personal contribution: re-architecting how the pipelines run. The platform originally processed sequentially; I introduced a parallel execution pattern that cut processing time by more than 5x. I also optimised the heaviest tables, cutting Fabric capacity usage 4x (from 80% to 20%) and making reporting more reliable.</p>
   <h2>The work</h2>
   <ul>
     <li>Co-built and managed the client's Fabric data platform end to end with a team of developers</li>
     <li>Implemented medallion architecture on a lakehouse with metadata-driven pipelines</li>
     <li>Change data capture and Dataflow Gen2 for ingestion; PySpark and Spark SQL for transformation</li>
     <li>Re-architected pipeline orchestration from sequential to parallel: more than 5x faster processing</li>
-    <li>Reduced overbloated tables and row counts for better ingestion performance</li>
+    <li>Optimised heavy tables: Fabric capacity usage down 4x, from 80% to 20%</li>
     <li>Worked in an Agile team with git-based workflows and CI/CD</li>
   </ul>
   <h2>Concepts</h2>
