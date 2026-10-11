@@ -663,6 +663,23 @@ a.cert { display: block; text-decoration: none; color: inherit; }
 .cert-cue::after { content: "show the list"; }
 .certs-details[open] .cert-cue::after { content: "hide the list"; }
 
+/* ---------- card media: illustrations, replaced by uploads in assets/media/ ---------- */
+.media { margin: 18px 0 6px; border: 1.5px solid var(--ink); background: var(--paper); aspect-ratio: 2 / 1; overflow: hidden; }
+.figure.wide .media { aspect-ratio: 35 / 12; }
+.media > svg, .media > img, .media > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.media > svg text { font-family: "Azeret Mono", ui-monospace, monospace; }
+.figure:not(.wide) .media > svg text { font-size: 13px; }
+.figure .media > svg text.tiny { font-size: 10px; }
+.media > svg text.serif { font-family: "Newsreader", Georgia, serif; }
+.media .flow { stroke-dasharray: 6 8; animation: flow 1.6s linear infinite; }
+.agent-dot { animation: agentpulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes agentpulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.bar-grow { transform-box: fill-box; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.3, 0.7, 0.2, 1); }
+.figure.in .bar-grow { transform: none; }
+.ecg { stroke-dasharray: 340 600; animation: ecg 2.6s linear infinite; }
+@keyframes ecg { from { stroke-dashoffset: 340; } to { stroke-dashoffset: -600; } }
+.hub-new { animation: agentpulse 1.6s ease-in-out infinite; }
+
 /* ---------- predict ---------- */
 .predict-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--paper-2); }
 .btn.predict { padding: 10px 18px; font-size: 12px; background: var(--blue); border-color: var(--blue); }
@@ -883,7 +900,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       Foundry, Copilot Studio, intelligent document processing, Azure Functions
       and Logic Apps.
     </p>
-    <div class="caption">client work, details confidential.</div>
+    <figure class="media" data-media="ai-agents" data-alt=""><svg viewBox="0 0 700 240" aria-hidden="true"><rect x="20" y="92" width="130" height="58" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="2"/><text x="85.0" y="118.0" text-anchor="middle" font-size="12" fill="#211e19">incoming quote</text><text x="85.0" y="135.0" text-anchor="middle" font-size="9.5" fill="#5d574c">email · PDF</text><line class="flow" x1="150" y1="121" x2="196" y2="121" stroke="#d3401f" stroke-width="2"/><rect x="196" y="92" width="174" height="58" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="2"/><text x="283.0" y="118.0" text-anchor="middle" font-size="12" fill="#211e19">document processing</text><text x="283.0" y="135.0" text-anchor="middle" font-size="9.5" fill="#5d574c">extract the fields</text><line class="flow" x1="370" y1="121" x2="414" y2="121" stroke="#d3401f" stroke-width="2"/><rect x="414" y="92" width="150" height="58" fill="#f7f3ea" stroke="#1f4ac2" stroke-width="2"/><text x="489.0" y="118.0" text-anchor="middle" font-size="12" fill="#211e19">agents</text><text x="489.0" y="135.0" text-anchor="middle" font-size="9.5" fill="#5d574c">price · stock · terms</text><line class="flow" x1="564" y1="121" x2="598" y2="121" stroke="#d3401f" stroke-width="2"/><rect x="598" y="92" width="84" height="58" fill="#1f4ac2" stroke="#1f4ac2" stroke-width="2"/><text x="640.0" y="118.0" text-anchor="middle" font-size="12" fill="#f7f3ea">order</text><text x="640.0" y="135.0" text-anchor="middle" font-size="9.5" fill="#f7f3ea">ready in ERP</text><circle class="agent-dot" style="animation-delay:0.0s" cx="455" cy="70" r="7" fill="#1f4ac2"/><circle class="agent-dot" style="animation-delay:0.4s" cx="489" cy="70" r="7" fill="#1f4ac2"/><circle class="agent-dot" style="animation-delay:0.8s" cx="523" cy="70" r="7" fill="#1f4ac2"/><text x="489" y="52" text-anchor="middle" font-size="9.5" fill="#5d574c">one agent per check</text><text x="350" y="205" text-anchor="middle" font-size="10" fill="#5d574c">from a quote in someone's inbox to an order in the system</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. the quote-to-cash flow, simplified. no client data.</div>
   </article>
 
   <article class="figure reveal">
@@ -894,6 +912,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       process on custom, knowledge-grounded agents. Demoed to 5 clients and now
       shown to clients by 3+ teams across Europe.
     </p>
+    <figure class="media" data-media="process-intelligence-engine" data-alt=""><svg viewBox="0 0 600 300" aria-hidden="true"><defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#211e19"/></marker></defs><text x="30" y="30" font-size="10" fill="#5d574c">any business process</text><rect x="30" y="44" width="116" height="40" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="88" y="68" text-anchor="middle" font-size="11" fill="#211e19">step 1</text><path d="M 146 64 L 170 64" stroke="#211e19" stroke-width="1.5" marker-end="url(#arr)"/><line x1="88" y1="84" x2="88" y2="128" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="3 4"/><circle class="agent-dot" style="animation-delay:0.0s" cx="88" cy="150" r="20" fill="#1f4ac2"/><text x="88" y="154" text-anchor="middle" class="tiny" fill="#f7f3ea">agent</text><line x1="88" y1="170" x2="88" y2="222" stroke="#d3401f" stroke-width="1.5" stroke-dasharray="3 4"/><rect x="170" y="44" width="116" height="40" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="228" y="68" text-anchor="middle" font-size="11" fill="#211e19">step 2</text><path d="M 286 64 L 310 64" stroke="#211e19" stroke-width="1.5" marker-end="url(#arr)"/><line x1="228" y1="84" x2="228" y2="128" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="3 4"/><circle class="agent-dot" style="animation-delay:0.5s" cx="228" cy="150" r="20" fill="#1f4ac2"/><text x="228" y="154" text-anchor="middle" class="tiny" fill="#f7f3ea">agent</text><line x1="228" y1="170" x2="228" y2="222" stroke="#d3401f" stroke-width="1.5" stroke-dasharray="3 4"/><rect x="310" y="44" width="116" height="40" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="368" y="68" text-anchor="middle" font-size="11" fill="#211e19">step 3</text><path d="M 426 64 L 450 64" stroke="#211e19" stroke-width="1.5" marker-end="url(#arr)"/><line x1="368" y1="84" x2="368" y2="128" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="3 4"/><circle class="agent-dot" style="animation-delay:1.0s" cx="368" cy="150" r="20" fill="#1f4ac2"/><text x="368" y="154" text-anchor="middle" class="tiny" fill="#f7f3ea">agent</text><line x1="368" y1="170" x2="368" y2="222" stroke="#d3401f" stroke-width="1.5" stroke-dasharray="3 4"/><rect x="450" y="44" width="116" height="40" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="508" y="68" text-anchor="middle" font-size="11" fill="#211e19">step 4</text><line x1="508" y1="84" x2="508" y2="128" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="3 4"/><circle class="agent-dot" style="animation-delay:1.5s" cx="508" cy="150" r="20" fill="#1f4ac2"/><text x="508" y="154" text-anchor="middle" class="tiny" fill="#f7f3ea">agent</text><line x1="508" y1="170" x2="508" y2="222" stroke="#d3401f" stroke-width="1.5" stroke-dasharray="3 4"/><rect x="30" y="222" width="536" height="44" fill="#efe9db" stroke="#d3401f" stroke-width="1.5"/><text x="298" y="249" text-anchor="middle" font-size="11" fill="#211e19">embedded knowledge, per process</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. custom agents run each step of a process, grounded in its own knowledge.</div>
   </article>
 
   <article class="figure reveal">
@@ -906,6 +926,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       sequential to parallel (more than 5x faster) and cut capacity usage 4x,
       from 80% to 20%.
     </p>
+    <figure class="media" data-media="oil-gas-platform" data-alt=""><svg viewBox="0 0 600 300" aria-hidden="true"><text x="30" y="40" font-size="11" fill="#211e19">pipeline run time</text><rect class="bar-grow" x="30" y="52" width="420" height="26" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="462" y="70" font-size="10" fill="#5d574c">sequential</text><rect class="bar-grow" style="transition-delay:.25s" x="30" y="86" width="84" height="26" fill="#1f4ac2"/><text x="126" y="104" font-size="10" fill="#1f4ac2">parallel: 5x+ faster</text><text x="30" y="160" font-size="11" fill="#211e19">Fabric capacity used</text><rect class="bar-grow" style="transition-delay:.5s" x="30" y="172" width="400" height="26" fill="#f7f3ea" stroke="#211e19" stroke-width="1.5"/><text x="442" y="190" font-size="10" fill="#5d574c">80% before</text><rect class="bar-grow" style="transition-delay:.75s" x="30" y="206" width="100" height="26" fill="#1f4ac2"/><text x="142" y="224" font-size="10" fill="#1f4ac2">20% after optimising heavy tables</text><line x1="30" y1="246" x2="530" y2="246" stroke="#211e19" stroke-width="1"/><text x="30" y="266" font-size="9" fill="#5d574c">0</text><text x="530" y="266" text-anchor="end" font-size="9" fill="#5d574c">100%</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. two numbers from the client's platform, before and after.</div>
     <span class="readmore">read the full write-up</span>
   </article>
 
@@ -918,6 +940,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       co-built with colleagues: Kafka, Event Hubs, Eventstream, Eventhouse and KQL.
       I mentored the two consultants who presented it at FabCon 2026 in Atlanta.
     </p>
+    <figure class="media" data-media="route-optimisation" data-alt=""><svg viewBox="0 0 600 300" aria-hidden="true"><g stroke="#efe9db" stroke-width="10" stroke-linecap="round"><line x1="20" y1="60" x2="580" y2="60"/><line x1="20" y1="150" x2="580" y2="150"/><line x1="20" y1="240" x2="580" y2="240"/><line x1="90" y1="20" x2="90" y2="280"/><line x1="230" y1="20" x2="230" y2="280"/><line x1="370" y1="20" x2="370" y2="280"/><line x1="510" y1="20" x2="510" y2="280"/></g><path d="M 90 150 L 230 150 L 230 60 L 510 60 L 510 150" fill="none" stroke="#1f4ac2" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#1f4ac2" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="9s" repeatCount="indefinite" path="M 90 150 L 230 150 L 230 60 L 510 60 L 510 150"/></circle><path d="M 90 150 L 90 240 L 370 240 L 370 150 L 510 150" fill="none" stroke="#1f4ac2" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#1f4ac2" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="11s" repeatCount="indefinite" path="M 90 150 L 90 240 L 370 240 L 370 150 L 510 150"/></circle><path d="M 90 150 L 230 150 L 230 240 L 510 240" fill="none" stroke="#d3401f" stroke-width="2" stroke-dasharray="5 5" opacity="0.6"/><circle r="7" fill="#d3401f" stroke="#f7f3ea" stroke-width="2"><animateMotion dur="8s" repeatCount="indefinite" path="M 90 150 L 230 150 L 230 240 L 510 240"/></circle><circle cx="510" cy="60" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="0s" repeatCount="indefinite"/></circle><circle cx="370" cy="240" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="1.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="1.3s" repeatCount="indefinite"/></circle><circle cx="510" cy="240" r="5" fill="none" stroke="#d3401f" stroke-width="2"><animate attributeName="r" values="5;22" dur="3.9s" begin="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0" dur="3.9s" begin="2.6s" repeatCount="indefinite"/></circle><rect x="76" y="136" width="28" height="28" fill="#211e19"/><text x="90" y="186" text-anchor="middle" font-size="10" fill="#211e19">depot</text><rect x="420" y="268" width="166" height="24" fill="#f7f3ea"/><circle cx="432" cy="280" r="5" fill="#1f4ac2"/><text x="442" y="284" font-size="9.5" fill="#5d574c">vehicle</text><circle cx="506" cy="280" r="5" fill="none" stroke="#d3401f" stroke-width="2"/><text x="516" y="284" font-size="9.5" fill="#5d574c">new event</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. illustration: routes update as events stream in.</div>
     <span class="readmore">read the full write-up</span>
   </article>
 </section>
@@ -932,7 +956,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       from notebook to something a hospital could use, to 50+ attendees at FabCon
       Europe 2026 in Barcelona.
     </p>
-    <div class="caption">Barcelona, 1 October 2026. Co-presented with a KPMG colleague.</div>
+    <figure class="media" data-media="fabcon-barcelona" data-alt=""><svg viewBox="0 0 700 240" aria-hidden="true"><rect width="700" height="240" fill="#f7f3ea"/><text x="34" y="62" font-size="11" fill="#d3401f" letter-spacing="1.5">FABCON EUROPE 2026 · BARCELONA</text><text x="34" y="112" class="serif" font-size="38" fill="#211e19">From Notebook</text><text x="34" y="154" class="serif" font-size="38" font-style="italic" fill="#1f4ac2">to Bedside.</text><text x="34" y="190" class="serif" font-size="15" font-style="italic" fill="#5d574c">a clinical risk prediction pipeline in Microsoft Fabric</text><g transform="translate(400,40)"><rect width="270" height="160" fill="#211e19" rx="6"/><g stroke="rgba(247,243,234,0.08)"><line x1="0" y1="20" x2="270" y2="20"/><line x1="0" y1="40" x2="270" y2="40"/><line x1="0" y1="60" x2="270" y2="60"/><line x1="0" y1="80" x2="270" y2="80"/><line x1="0" y1="100" x2="270" y2="100"/><line x1="0" y1="120" x2="270" y2="120"/><line x1="0" y1="140" x2="270" y2="140"/><line x1="20" y1="0" x2="20" y2="160"/><line x1="40" y1="0" x2="40" y2="160"/><line x1="60" y1="0" x2="60" y2="160"/><line x1="80" y1="0" x2="80" y2="160"/><line x1="100" y1="0" x2="100" y2="160"/><line x1="120" y1="0" x2="120" y2="160"/><line x1="140" y1="0" x2="140" y2="160"/><line x1="160" y1="0" x2="160" y2="160"/><line x1="180" y1="0" x2="180" y2="160"/><line x1="200" y1="0" x2="200" y2="160"/><line x1="220" y1="0" x2="220" y2="160"/><line x1="240" y1="0" x2="240" y2="160"/><line x1="260" y1="0" x2="260" y2="160"/></g><path class="ecg" d="M 0 90 L 40 90 L 50 82 L 60 90 L 80 90 L 88 104 L 98 30 L 108 120 L 116 90 L 140 90 L 152 78 L 166 90 L 270 90" fill="none" stroke="#7cf0a8" stroke-width="2.2"/><text x="14" y="24" font-size="10" fill="#7cf0a8">risk score</text><text x="256" y="24" text-anchor="end" font-size="10" fill="#7cf0a8">live</text></g></svg></figure>
+    <div class="caption" data-fig-caption>Barcelona, 1 October 2026. Co-presented with a KPMG colleague.</div>
   </article>
 </section>
 
@@ -1003,6 +1028,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       Flask and the Gurobi optimizer, with dynamic scenario analysis for
       supplier selection.
     </p>
+    <figure class="media" data-media="econexus" data-alt=""><svg viewBox="0 0 600 300" aria-hidden="true"><line x1="60" y1="250" x2="560" y2="250" stroke="#211e19" stroke-width="1.5"/><line x1="60" y1="30" x2="60" y2="250" stroke="#211e19" stroke-width="1.5"/><text x="560" y="272" text-anchor="end" font-size="10" fill="#5d574c">cost →</text><text x="-250" y="44" transform="rotate(-90)" font-size="10" fill="#5d574c">water use →</text><circle cx="150" cy="110" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="210" cy="80" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="300" cy="120" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="380" cy="90" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="450" cy="130" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="340" cy="170" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="470" cy="70" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><circle cx="520" cy="110" r="5" fill="#efe9db" stroke="#5d574c" stroke-width="1"/><path d="M 90 70 L 120 120 L 160 160 L 210 190 L 270 210 L 340 224 L 420 232 L 510 236" fill="none" stroke="#1f4ac2" stroke-width="1.5" stroke-dasharray="4 4"/><circle cx="90" cy="70" r="5.5" fill="#1f4ac2"/><circle cx="120" cy="120" r="5.5" fill="#1f4ac2"/><circle cx="160" cy="160" r="5.5" fill="#1f4ac2"/><circle cx="210" cy="190" r="5.5" fill="#1f4ac2"/><circle cx="270" cy="210" r="5.5" fill="#1f4ac2"/><circle cx="340" cy="224" r="5.5" fill="#1f4ac2"/><circle cx="420" cy="232" r="5.5" fill="#1f4ac2"/><circle cx="510" cy="236" r="5.5" fill="#1f4ac2"/><circle cx="210" cy="190" r="11" fill="none" stroke="#d3401f" stroke-width="2.5"/><text x="226" y="178" font-size="10.5" fill="#d3401f">the weights pick this one</text><text x="350" y="214" font-size="10" fill="#1f4ac2">efficient supplier mixes</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. the trade-off between cost and water use. goal weights choose the point.</div>
     <span class="readmore">read the full write-up</span>
   </article>
 
@@ -1016,6 +1043,8 @@ a.cert { display: block; text-decoration: none; color: inherit; }
       then TSP and VRP models in Gurobi and Google OR-Tools to minimise
       kilometres driven.
     </p>
+    <figure class="media" data-media="hub-network" data-alt=""><svg viewBox="0 0 600 300" aria-hidden="true"><line x1="140" y1="90" x2="129" y2="105" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="129" cy="105" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="131" y2="81" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="131" cy="81" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="101" y2="84" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="101" cy="84" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="187" y2="103" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="187" cy="103" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="184" y2="97" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="184" cy="97" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="157" y2="96" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="157" cy="96" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="70" y2="116" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="70" cy="116" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="161" y2="105" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="161" cy="105" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="69" y2="38" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="69" cy="38" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="103" y2="76" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="103" cy="76" r="3.5" fill="#5d574c"/><line x1="140" y1="90" x2="153" y2="89" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="153" cy="89" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="192" y2="201" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="192" cy="201" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="183" y2="232" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="183" cy="232" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="142" y2="272" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="142" cy="272" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="193" y2="256" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="193" cy="256" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="144" y2="198" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="144" cy="198" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="156" y2="217" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="156" cy="217" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="197" y2="227" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="197" cy="227" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="151" y2="191" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="151" cy="191" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="148" y2="257" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="148" cy="257" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="136" y2="227" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="136" cy="227" r="3.5" fill="#5d574c"/><line x1="170" y1="220" x2="188" y2="175" stroke="#1f4ac2" stroke-width="1" opacity="0.35"/><circle cx="188" cy="175" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="432" y2="209" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="432" cy="209" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="345" y2="160" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="345" cy="160" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="426" y2="145" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="426" cy="145" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="451" y2="168" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="451" cy="168" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="368" y2="195" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="368" cy="195" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="458" y2="198" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="458" cy="198" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="491" y2="181" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="491" cy="181" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="435" y2="131" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="435" cy="131" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="456" y2="152" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="456" cy="152" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="411" y2="132" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="411" cy="132" r="3.5" fill="#5d574c"/><line x1="430" y1="170" x2="389" y2="154" stroke="#d3401f" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/><circle cx="389" cy="154" r="3.5" fill="#5d574c"/><rect x="131" y="81" width="18" height="18" fill="#1f4ac2"/><rect x="161" y="211" width="18" height="18" fill="#1f4ac2"/><rect class="hub-new" x="421" y="161" width="18" height="18" fill="#d3401f" transform="rotate(45 430 170)"/><text x="452" y="140" font-size="10.5" fill="#d3401f">new hub</text><text x="100" y="40" font-size="10" fill="#1f4ac2">existing hubs</text></svg></figure>
+    <div class="caption" data-fig-caption>fig. k-means proposes candidate hubs; routing picks the one that saves the most kilometres.</div>
     <span class="readmore">read the full write-up</span>
   </article>
 </section>
@@ -1157,28 +1186,18 @@ const STEPS = [
   { label: "EAISI",    logo: "eaisi",     year: "2025", v: 8.5, edu: true },
 ];
 const NEXT_STEPS = [            // candidate classes for step 7 and their (made-up) base probabilities
-  ["Manager, AI & Data", 0.12],
-  ["Lead AI Engineer", 0.11],
-  ["AI Architect", 0.10],
-  ["Speaker at FabCon 2027", 0.09],
-  ["AI product lead", 0.07],
-  ["Guest lecturer at EAISI", 0.07],
-  ["PhD in healthcare AI", 0.06],
-  ["Builds an agent that writes his monthly brag log", 0.06],
-  ["Hibiki finally speaks Lithuanian", 0.06],
-  ["Writes a book on AI that actually gets used", 0.05],
-  ["Runs a full marathon", 0.05],
-  ["Finally fluent in Dutch", 0.05],
-  ["Data & AI Partner, eventually", 0.04],
-  ["Opens a restaurant", 0.03],
-  ["Teaches his parents to use ChatGPT", 0.02],
+  ["Manager, AI & Data", 0.24],
+  ["Lead AI Engineer", 0.22],
+  ["AI Architect", 0.18],
+  ["Speaker at FabCon 2027", 0.14],
+  ["Guest lecturer at EAISI", 0.09],
+  ["Finally fluent in Dutch", 0.07],
+  ["Opens a restaurant", 0.04],
   ["Professional basketball player", 0.02],
 ];
 const TOASTS = {
   "Professional basketball player": "outlier detected. the model is 98% sure this won't happen. a man can dream.",
   "Opens a restaurant": "one new recipe a week, compounding.",
-  "Hibiki finally speaks Lithuanian": "the model is optimistic about side projects.",
-  "Builds an agent that writes his monthly brag log": "very meta. also, honestly, plausible.",
 };
 const SVGNS = "http://www.w3.org/2000/svg";
 const X = i => 80 + i * 64;                 // step index 0..6 -> px (step 7 = index 6)
@@ -1282,7 +1301,7 @@ const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v)
 let lastPick = null;
 function runModel() {
   // each run re-rolls the model: noisy logits -> softmax, the previous answer excluded
-  const logits = NEXT_STEPS.map(([name, p]) => name === lastPick ? -Infinity : Math.log(p) + gauss() * 0.6);
+  const logits = NEXT_STEPS.map(([name, p]) => name === lastPick ? -Infinity : Math.log(p) + gauss() * 0.35);
   const mxl = Math.max(...logits), ex = logits.map(l => Math.exp(l - mxl)), z = ex.reduce((x, y) => x + y);
   const probs = NEXT_STEPS.map(([name], k) => [name, ex[k] / z]);
   let r = Math.random(), pick = probs[0];
@@ -1298,8 +1317,7 @@ function placePred(v) {
   predStem.setAttribute("x1", X(5)); predStem.setAttribute("y1", Y(STEPS[5].v)); predStem.setAttribute("x2", x); predStem.setAttribute("y2", y);
 }
 function renderProbs(probs, pick) {
-  const top = probs.slice().sort((x, y) => y[1] - x[1]).slice(0, 6);
-  if (!top.some(([name]) => name === pick)) top[5] = probs.find(([name]) => name === pick);
+  const top = probs.slice().sort((x, y) => y[1] - x[1]);
   const max = top[0][1];
   predProbs.hidden = false;
   predProbs.innerHTML = top.map(([name, p]) =>
@@ -1332,6 +1350,25 @@ predictBtn.addEventListener("click", () => {
     if (TOASTS[name]) showToast(TOASTS[name], 3600);
   };
   step();
+});
+
+/* ---------- card media: drop assets/media/<name>.mp4|jpg|png to replace an illustration ---------- */
+document.querySelectorAll(".media[data-media]").forEach(fig => {
+  const name = fig.dataset.media;
+  const tryExt = exts => {
+    if (!exts.length) return;
+    const src = `assets/media/${name}.${exts[0]}`;
+    fetch(src, { method: "HEAD" }).then(r => {
+      if (!r.ok) return tryExt(exts.slice(1));
+      const isVideo = exts[0] === "mp4";
+      const m = document.createElement(isVideo ? "video" : "img");
+      m.src = src;
+      if (isVideo) { Object.assign(m, { autoplay: true, muted: true, loop: true, playsInline: true }); m.setAttribute("muted", ""); }
+      else { m.alt = fig.dataset.alt || ""; m.loading = "lazy"; }
+      fig.replaceChildren(m);
+    }).catch(() => tryExt(exts.slice(1)));
+  };
+  tryExt(["mp4", "jpg", "png"]);
 });
 
 /* ---------- reveal ---------- */
