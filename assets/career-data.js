@@ -22,7 +22,7 @@ window.caseFiles = [
     "title": "Partner Development Manager, SMC",
     "role": "Leading the Azure Migration & Modernization Programme.",
     "work": [
-      "Led AMMP for the Small, Medium & Corporate partner business",
+      "Led AMMP adoption for the Small, Medium & Corporate partner business",
       "Guided partners through moving client estates to Azure",
       "Built migration business cases where technology met commercial reality"
     ],
@@ -95,9 +95,9 @@ window.caseFiles = [
     "title": "Post-master Data Science & AI, TU/e",
     "role": "Professional degree at the Eindhoven AI Systems Institute. Certified data scientist title.",
     "work": [
-      "Deepening ML engineering, MLOps and AI systems thinking",
-      "Applying rigour to real industry cases alongside the day job",
-      "Building AI that survives contact with the real world"
+      "Deepened ML engineering, MLOps and AI systems thinking",
+      "Applied rigour to real industry cases alongside the day job",
+      "Built AI meant to survive contact with the real world"
     ],
     "tags": [
       "ML engineering",
